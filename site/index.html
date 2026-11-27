@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Учебные материалы для студентов кафедры статистической физики: 3–6 курс.">
+  <meta name="color-scheme" content="light dark">
+  <title>Учебные материалы — Статистическая физика</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержанию</a>
+  <header class="topbar">
+    <div class="wrap top-inner">
+      <a class="brand" href="#/" aria-label="На главную">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><ellipse cx="22" cy="22" rx="17" ry="7" transform="rotate(-35 22 22)"/><ellipse cx="22" cy="22" rx="17" ry="7" transform="rotate(35 22 22)"/><circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/></svg></span>
+        <span><strong>Статистическая физика</strong><small>Учебный архив кафедры</small></span>
+      </a>
+      <button class="theme" id="theme" type="button" aria-label="Переключить цветовую тему" title="Переключить тему">◐</button>
+    </div>
+  </header>
+  <div class="wrap layout">
+    <aside class="sidebar" aria-label="Навигация">
+      <p class="eyebrow">Навигация</p>
+      <nav id="nav" aria-label="Курсы">
+        <a href="#/" data-nav="home">Все материалы</a>
+        <a href="#/3" data-nav="3">3 курс <span>03</span></a>
+        <a href="#/4" data-nav="4">4 курс <span>04</span></a>
+        <a href="#/5" data-nav="5">5 курс <span>05</span></a>
+        <a href="#/6" data-nav="6">6 курс <span>06</span></a>
+      </nav>
+      <div class="side-note"><span class="eyebrow">Об архиве</span><p>Лекции, задачи и литература в едином каталоге. Материалы организованы по курсам, семестрам и дисциплинам.</p><a id="repo-link" class="plain-link" hidden target="_blank" rel="noopener noreferrer">Репозиторий GitHub ↗</a></div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div id="content" aria-live="polite"></div>
+      <noscript>Для просмотра каталога включите JavaScript.</noscript>
+    </main>
+  </div>
+  <footer class="wrap footer"><span>Кафедра статистической физики · Учебные материалы</span><span>GitHub Pages</span></footer>
+  <script type="application/json" id="catalog">__CATALOG_JSON__</script>
+</body>
+</html>
