@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-department="__DEPARTMENT_ID__">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Учебные материалы для студентов кафедры статистической физики: 3–6 курс.">
+  <meta name="description" content="Учебные материалы — __DEPARTMENT_NAME__: 3–6 курс.">
   <meta name="color-scheme" content="light dark">
-  <title>Учебные материалы — Статистическая физика</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
+  <title>Учебные материалы — __DEPARTMENT_NAME__</title>
+  <link rel="stylesheet" href="__ASSET_PREFIX__style.css">
+  <link rel="stylesheet" href="__ASSET_PREFIX__themes/__DEPARTMENT_ID__.css">
+  <script defer src="__ASSET_PREFIX__app.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержанию</a>
@@ -15,10 +16,11 @@
     <div class="wrap top-inner">
       <a class="brand" href="#/" aria-label="На главную">
         <span class="mark" aria-hidden="true"><svg viewBox="0 0 44 44" fill="none"><ellipse cx="22" cy="22" rx="17" ry="7" transform="rotate(-35 22 22)"/><ellipse cx="22" cy="22" rx="17" ry="7" transform="rotate(35 22 22)"/><circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/></svg></span>
-        <span><strong>Статистическая физика</strong><small>Учебный архив кафедры</small></span>
+        <span><strong>__DEPARTMENT_NAME__</strong><small>Учебный архив · СПбГУ</small></span>
       </a>
       <button class="theme" id="theme" type="button" aria-label="Переключить цветовую тему" title="Переключить тему">◐</button>
     </div>
+    <nav id="archives" class="wrap archive-nav" aria-label="Архивы кафедр"></nav>
   </header>
   <div class="wrap layout">
     <aside class="sidebar" aria-label="Навигация">
@@ -37,7 +39,7 @@
       <noscript>Для просмотра каталога включите JavaScript.</noscript>
     </main>
   </div>
-  <footer class="wrap footer"><span>Кафедра статистической физики · Учебные материалы</span><span>GitHub Pages</span></footer>
+  <footer class="wrap footer"><span>__DEPARTMENT_NAME__ · Учебные материалы</span><span>GitHub Pages</span></footer>
   <script type="application/json" id="catalog">__CATALOG_JSON__</script>
 </body>
 </html>
