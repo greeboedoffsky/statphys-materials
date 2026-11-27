@@ -5,3 +5,64 @@
 @media(max-width:900px){.wrap{width:calc(100% - 36px)}.layout{grid-template-columns:170px minmax(0,1fr);gap:24px}.hero{padding:30px 25px}.hero-graphic{opacity:.12}.course-card{padding:18px}}
 @media(max-width:650px){.wrap{width:calc(100% - 28px)}.top-inner{height:72px}.brand strong{font-size:.95rem}.brand small{font-size:.72rem}.mark{width:40px;height:40px}.mark svg{width:32px}.layout{display:block;padding:15px 0 40px}.sidebar{padding:0 0 16px}.sidebar .eyebrow,.side-note,.sidebar nav a span{display:none}.sidebar nav{display:flex;gap:5px;overflow-x:auto;padding:3px}.sidebar nav a{white-space:nowrap;padding:9px 10px;font-size:.8rem}.hero{min-height:205px;padding:25px 20px}.hero h1{font-size:2.3rem}.hero p:last-child{font-size:.88rem}.hero-graphic{width:200px;opacity:.1}.course-grid{gap:10px}.course-card{padding:16px 13px}.course-num{font-size:2rem}.course-card h3{font-size:1rem}.course-card p{font-size:.76rem}.footer{display:block}.footer span{display:block;margin-bottom:6px}.download{font-size:0}.download::after{content:'↓';font-size:1.25rem}.folder,.file{padding:12px 10px;gap:10px}.file-icon{width:36px;height:36px}.file-main strong{font-size:.88rem}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+/* Garnet & jade — visual theme. Catalogue logic and file paths are unchanged. */
+:root {
+  --bg:#f7f4ef; --paper:#fffdf8; --ink:#23392f; --muted:#5a6b60;
+  --line:#dcded3; --accent:#8f303e; --soft:#e9eee2;
+  --hero:#203c32; --hero-ink:#fff6e5; --green:#316b52;
+  --red:#963341; --gold:#d8b77d; --shadow:0 6px 24px #273a2c0c;
+}
+:root[data-theme=dark] {
+  --bg:#131e19; --paper:#1b2b23; --ink:#eef0e6; --muted:#b0c1b5;
+  --line:#3b4d41; --accent:#ed9a9d; --soft:#293e31;
+  --hero:#203b30; --hero-ink:#fff6e5; --green:#9acaac;
+  --red:#ed9a9d; --gold:#e5c68d; --shadow:none;
+}
+@media(prefers-color-scheme:dark) {
+  :root:not([data-theme]) {
+    --bg:#131e19; --paper:#1b2b23; --ink:#eef0e6; --muted:#b0c1b5;
+    --line:#3b4d41; --accent:#ed9a9d; --soft:#293e31;
+    --hero:#203b30; --hero-ink:#fff6e5; --green:#9acaac;
+    --red:#ed9a9d; --gold:#e5c68d; --shadow:none;
+  }
+}
+.topbar {border-top:4px solid #923341;}
+.mark {color:var(--green);border:1px solid var(--line);}
+.brand strong {color:var(--red);}
+.theme:hover {border-color:var(--accent);color:var(--accent);}
+.sidebar nav a[aria-current=page] {box-shadow:inset 3px 0 var(--red);}
+.sidebar nav a:hover {color:var(--red);}
+.hero {background:linear-gradient(112deg,#702a38 0%,#522a32 30%,#294238 72%,#1b3b30 100%);border:1px solid #8a6353;min-height:270px;isolation:isolate;}
+.hero::before {content:'';position:absolute;inset:8px;border:1px solid #d8b77d50;border-radius:10px;pointer-events:none;z-index:0;}
+.hero::after {content:'';position:absolute;right:7px;top:0;bottom:0;width:min(39%,360px);background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20360%20270%22%20fill%3D%22none%22%3E%0A%3Cg%20stroke%3D%22%23d7b77d%22%20opacity%3D%22.42%22%20stroke-width%3D%22.8%22%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22135%22%20r%3D%22108%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22135%22%20r%3D%22100%22%20stroke-dasharray%3D%221%205%22%2F%3E%3Cellipse%20cx%3D%22180%22%20cy%3D%22135%22%20rx%3D%22122%22%20ry%3D%2249%22%20transform%3D%22rotate%28-40%20180%20135%29%22%2F%3E%3Cellipse%20cx%3D%22180%22%20cy%3D%22135%22%20rx%3D%22122%22%20ry%3D%2249%22%20transform%3D%22rotate%2840%20180%20135%29%22%2F%3E%3Cpath%20d%3D%22M180%2015v22m0%20196v22M60%20135h22m196%200h22%22%2F%3E%3C%2Fg%3E%0A%3Cg%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%3C%21--%20jade%20serpent%20--%3E%0A%3Cpath%20d%3D%22M92%20227%20C42%20190%2052%20133%2091%20115%20C120%20101%20154%20118%20173%20146%20C198%20183%20247%20189%20266%20157%20C286%20123%20251%20100%20215%2099%20C173%2097%20138%2073%20151%2048%20C163%2025%20198%2032%20214%2052%22%20stroke%3D%22%23142e25%22%20stroke-width%3D%2222%22%2F%3E%0A%3Cpath%20d%3D%22M92%20227%20C42%20190%2052%20133%2091%20115%20C120%20101%20154%20118%20173%20146%20C198%20183%20247%20189%20266%20157%20C286%20123%20251%20100%20215%2099%20C173%2097%20138%2073%20151%2048%20C163%2025%20198%2032%20214%2052%22%20stroke%3D%22%2381ae8e%22%20stroke-width%3D%2215%22%2F%3E%0A%3Cpath%20d%3D%22M92%20227%20C76%20215%2070%20206%2066%20196%22%20stroke%3D%22%23d2d7ab%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M92%20227%20Q102%20235%20110%20236%22%20stroke%3D%22%2381ae8e%22%20stroke-width%3D%224%22%2F%3E%0A%3Cpath%20d%3D%22M65%20177%20C57%20136%2092%20106%20123%20114%20C155%20123%20165%20138%20179%20155%20C208%20191%20250%20180%20266%20157%20C282%20127%20250%20102%20215%2099%20C173%2097%20138%2073%20151%2048%20C163%2025%20198%2032%20214%2052%22%20stroke%3D%22%23e2ddab%22%20stroke-width%3D%221.2%22%20stroke-dasharray%3D%221%206%22%20opacity%3D%22.9%22%2F%3E%0A%3Cpath%20d%3D%22M204%2040%20Q222%2039%20231%2058%20Q225%2069%20212%2063%20L205%2056Z%22%20fill%3D%22%23a5c5a2%22%20stroke%3D%22%23d9d6a0%22%20stroke-width%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%22221%22%20cy%3D%2254%22%20r%3D%222.2%22%20fill%3D%22%23172c25%22%2F%3E%3Cpath%20d%3D%22M230%2059l9%205m-2-3%203%200m-3%203%200%203%22%20stroke%3D%22%23d9b77e%22%20stroke-width%3D%221.2%22%2F%3E%0A%3C%21--%20garnet%20serpent%20--%3E%0A%3Cpath%20d%3D%22M276%2044%20C319%2080%20308%20138%20269%20157%20C239%20172%20210%20151%20187%20122%20C164%2090%20116%2083%2094%20114%20C70%20147%20108%20173%20145%20174%20C187%20175%20222%20200%20208%20222%20C195%20245%20163%20239%20147%20219%22%20stroke%3D%22%23381d22%22%20stroke-width%3D%2222%22%2F%3E%0A%3Cpath%20d%3D%22M276%2044%20C319%2080%20308%20138%20269%20157%20C239%20172%20210%20151%20187%20122%20C164%2090%20116%2083%2094%20114%20C70%20147%20108%20173%20145%20174%20C187%20175%20222%20200%20208%20222%20C195%20245%20163%20239%20147%20219%22%20stroke%3D%22%23c46562%22%20stroke-width%3D%2215%22%2F%3E%0A%3Cpath%20d%3D%22M276%2044%20Q265%2034%20255%2034%22%20stroke%3D%22%23c46562%22%20stroke-width%3D%224%22%2F%3E%3Cpath%20d%3D%22M301%2092%20C311%20128%20281%20164%20249%20163%20C216%20161%20201%20139%20187%20122%20C164%2090%20116%2083%2094%20114%20C70%20147%20108%20173%20145%20174%20C187%20175%20222%20200%20208%20222%20C195%20245%20163%20239%20147%20219%22%20stroke%3D%22%23f1c598%22%20stroke-width%3D%221.2%22%20stroke-dasharray%3D%221%206%22%2F%3E%0A%3Cpath%20d%3D%22M157%20230%20Q139%20232%20130%20212%20Q136%20202%20149%20208%20L156%20215Z%22%20fill%3D%22%23d78076%22%20stroke%3D%22%23edc49c%22%20stroke-width%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%22141%22%20cy%3D%22216%22%20r%3D%222.2%22%20fill%3D%22%23382025%22%2F%3E%3Cpath%20d%3D%22M131%20211l-10-5m3%203-4%200m4-3v-3%22%20stroke%3D%22%23edc49c%22%20stroke-width%3D%221.2%22%2F%3E%0A%3C%2Fg%3E%3Cg%20fill%3D%22%23e6cd99%22%20opacity%3D%22.85%22%3E%3Cpath%20d%3D%22M180%20124l2.5%208.5%208.5%202.5-8.5%202.5-2.5%208.5-2.5-8.5-8.5-2.5%208.5-2.5Z%22%2F%3E%3Ccircle%20cx%3D%2274%22%20cy%3D%2267%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22286%22%20cy%3D%22203%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%2215%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22255%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center right / contain no-repeat;pointer-events:none;z-index:0;}
+.hero-copy {max-width:min(620px,65%);}
+.hero .eyebrow {color:#efc990;}
+.hero h1 {color:#fff6e5;}
+.hero p:last-child {color:#f0e9dc;}
+.hero-graphic {display:none;}
+.course-card {position:relative;overflow:hidden;border-top:3px solid var(--red);}
+.course-card:nth-child(even) {border-top-color:var(--green);}
+.course-card:hover {border-color:var(--red);}
+.course-card:nth-child(even):hover {border-color:var(--green);}
+.course-card:nth-child(even) .course-num {color:var(--green);}
+.course-card::after {content:'';position:absolute;right:-13px;bottom:-33px;width:88px;height:88px;border:1px solid var(--line);border-radius:50%;box-shadow:0 0 0 8px var(--soft);opacity:.65;pointer-events:none;}
+.course-card p,.course-card h3,.card-top {position:relative;z-index:1;}
+.pagehead {border-bottom:2px solid var(--red);}
+.pagehead .eyebrow,.section-head h2 {color:var(--green);}
+.file-icon {color:var(--green);}
+.folder:hover,.file:hover,.manage-actions a:hover {border-color:var(--red);}
+.manage {border-left:3px solid var(--green);}
+.footer {border-top-color:var(--red);}
+@media(max-width:900px) {
+  .hero-copy {max-width:68%;}
+  .hero::after {width:35%;right:5px;}
+}
+@media(max-width:650px) {
+  .hero {min-height:220px;padding:27px 22px;}
+  .hero-copy {max-width:100%;padding-right:0;}
+  .hero::after {width:43%;opacity:.18;right:0;}
+  .hero h1 {font-size:clamp(1.9rem,7vw,2.3rem);}
+  .course-card::after {display:none;}
+}
