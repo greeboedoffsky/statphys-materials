@@ -1,145 +1,65 @@
-:root{
-  --bg:#f2f6fb;
-  --paper:#ffffff;
-  --ink:#11263a;
-  --muted:#60748c;
-  --line:#d7e2f0;
-  --accent:#71b7ff;
-  --soft:#eaf3ff;
-  --hero:#061225;
-  --red:#9dc7ff;
-  --green:#79ffd6;
-  --hero-start:#040c18;
-  --hero-end:#142b53;
-  --gold:#8cf5db;
+/* Deep Space — isolated department theme. */
+:root[data-department=field]{
+  --bg:#e9e9f0;--paper:#f8f8fc;--ink:#191c2e;--muted:#53576e;--line:#c9cbd9;
+  --accent:#494881;--soft:#e4e2ef;--hero:#060710;--hero-ink:#f6f4ff;
+  --red:#57558d;--green:#86552d;--gold:#86552d;
+  --hero-start:#05060d;--hero-end:#0d0b1a;--shadow:0 8px 22px #1915250c;
+  --space-faint:#7266a815;--space-star:#7976943b;
 }
-:root[data-theme=dark]{
-  --bg:#070d17;
-  --paper:#0e1828;
-  --ink:#eef6ff;
-  --muted:#a6b8d0;
-  --line:#22344f;
-  --accent:#8cc7ff;
-  --soft:#12243a;
-  --hero:#061225;
-  --red:#b8d8ff;
-  --green:#95ffe2;
-  --hero-start:#020814;
-  --hero-end:#123567;
-  --gold:#95ffe2;
+:root[data-department=field][data-theme=dark]{
+  --bg:#080911;--paper:#11121d;--ink:#f0edf8;--muted:#b2afc5;--line:#2c2c40;
+  --accent:#b9b4f2;--soft:#202034;--hero:#060710;--hero-ink:#f6f4ff;
+  --red:#b9b4f2;--green:#edbd8a;--gold:#edbd8a;
+  --hero-start:#05060d;--hero-end:#0d0b1a;--shadow:0 8px 28px #0004;
+  --space-faint:#7d6cb41a;--space-star:#b4b1d33b;
 }
-@media(prefers-color-scheme:dark){:root:not([data-theme]){
-  --bg:#070d17;--paper:#0e1828;--ink:#eef6ff;--muted:#a6b8d0;--line:#22344f;--accent:#8cc7ff;--soft:#12243a;--hero:#061225;--red:#b8d8ff;--green:#95ffe2;--hero-start:#020814;--hero-end:#123567;--gold:#95ffe2;
+@media(prefers-color-scheme:dark){:root[data-department=field]:not([data-theme]){
+  --bg:#080911;--paper:#11121d;--ink:#f0edf8;--muted:#b2afc5;--line:#2c2c40;
+  --accent:#b9b4f2;--soft:#202034;--hero:#060710;--hero-ink:#f6f4ff;
+  --red:#b9b4f2;--green:#edbd8a;--gold:#edbd8a;
+  --hero-start:#05060d;--hero-end:#0d0b1a;--shadow:0 8px 28px #0004;
+  --space-faint:#7d6cb41a;--space-star:#b4b1d33b;
 }}
-
-.mark{display:none}
-.brand{gap:0}
-.brand strong{color:var(--accent)}
-
-/* Общий курсивный sci-fi характер кафедры */
-body,
-button,
-input,
-select,
-textarea,
-.brand,
-.archive-link,
-.sidebar nav a,
-.hero,
-.section-head h2,
-.course-card,
-.pagehead,
-.subject-summary,
-.file-main strong,
-.file-main small,
-.manage,
-.footer,
-.upload-dialog{font-style:italic}
-.hero h1,
-.pagehead h1,
-.course-card h3,
-.subject-name,
-.brand strong{font-family:Georgia,"Times New Roman",serif}
-
-/* Усиленный sci-fi стиль: неон, сетка, техно-рамка */
-.hero{
-  background:
-    radial-gradient(circle at 8% 16%, #ffffffcc 0 1px, transparent 1.7px),
-    radial-gradient(circle at 16% 58%, #ffffff88 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 28% 36%, #7bc4ff88 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 36% 82%, #92ffe388 0 1.1px, transparent 1.9px),
-    radial-gradient(circle at 50% 18%, #ffffffcc 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 61% 48%, #dce3ff88 0 1.2px, transparent 1.9px),
-    radial-gradient(circle at 74% 24%, #ffffffcc 0 1px, transparent 1.7px),
-    radial-gradient(circle at 86% 70%, #8dfde088 0 1.1px, transparent 1.9px),
-    linear-gradient(135deg,var(--hero-start),#091d39 38%,#102852 68%,var(--hero-end));
-  border:1px solid #8cc7ff2b;
-  box-shadow:
-    inset 0 1px 0 #ffffff18,
-    inset 0 0 0 1px #8cc7ff1e,
-    0 12px 40px #0612252a,
-    0 0 0 1px #79ffd608;
-  overflow:hidden;
+:root[data-department=field] body{
+  font-family:Georgia,"Times New Roman",serif;font-style:italic;
+  background-color:var(--bg);
+  background-image:radial-gradient(ellipse at 82% 2%,var(--space-faint),transparent 58%),radial-gradient(circle,var(--space-star) .65px,transparent 1px);
+  background-size:auto,71px 71px;
 }
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:12px;
-  border-radius:14px;
-  border:1px solid #8cc7ff22;
-  background:
-    linear-gradient(#ffffff08 1px, transparent 1px),
-    linear-gradient(90deg,#ffffff08 1px, transparent 1px);
-  background-size:22px 22px;
-  mask-image:linear-gradient(to right, #000 0 65%, transparent 100%);
-  pointer-events:none;
+:root[data-department=field] :is(button,input,select,textarea){font:inherit}
+:root[data-department=field] .mark{display:none}
+:root[data-department=field] .brand{gap:0}
+:root[data-department=field] .brand strong{color:var(--accent);font-size:1.28rem}
+:root[data-department=field] .topbar{background:var(--paper)}
+:root[data-department=field] .hero{
+  isolation:isolate;min-height:320px;padding:42px 40px;gap:20px;
+  background-color:#05060d;
+  background-image:linear-gradient(90deg,#05060d 0%,#05060dfa 24%,#05060d9c 47%,#05060d00 72%),url('../art/field-deep-space.svg');
+  background-position:center,right center;background-repeat:no-repeat;background-size:100% 100%,auto 100%;
+  border:1px solid #45405a;border-radius:16px;box-shadow:0 15px 40px #0004;
 }
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:auto -40px -70px auto;
-  width:390px;
-  height:390px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 50% 50%, #8cc7ff15 0 21%, transparent 22%),
-    radial-gradient(circle at 50% 50%, transparent 0 39%, #79ffd61a 40% 41%, transparent 42%),
-    radial-gradient(circle at 50% 50%, transparent 0 54%, #8cc7ff18 55% 56%, transparent 57%),
-    radial-gradient(circle at 36% 28%, #ffffff10 0 7%, transparent 8%),
-    radial-gradient(circle at 67% 43%, #95ffe222 0 11%, transparent 12%);
-  filter:drop-shadow(0 0 24px #79ffd633);
-  opacity:.95;
-  pointer-events:none;
-}
-.hero .eyebrow{color:#cfe8ff;letter-spacing:.18em}
-.hero h1{color:#f8fcff;text-shadow:0 0 18px #8cc7ff1a}
-.hero p:last-child{color:#dbebff}
-.hero-copy{max-width:min(560px,56%)}
-.hero-graphic{width:39%;max-width:355px;filter:drop-shadow(0 0 18px #79ffd636) drop-shadow(0 18px 34px #0006)}
-
-.archive-link,.semester-link,.folder,.file,.subject-card,.course-card,.manage,.theme{border-radius:12px}
-.archive-link[aria-current=page],
-.sidebar nav a:hover,.sidebar nav a[aria-current=page],
-.semester-link:hover,.semester-link[aria-current=page],
-.subject-card[open],.folder:hover,.file:hover,.manage-actions a:hover{border-color:var(--gold)}
-.archive-link[aria-current=page],.semester-link[aria-current=page]{color:var(--gold);box-shadow:0 0 0 1px #95ffe21c, 0 0 18px #95ffe214}
-.subject-summary:hover,.archive-link:hover,.semester-link:hover,.sidebar nav a:hover,.sidebar nav a[aria-current=page]{background:var(--soft)}
-.pagehead{border-bottom:2px solid var(--gold)}
-.pagehead .eyebrow,.section-head h2,.material-label,.subject-summary::before,.file-icon,.course-num{color:var(--accent)}
-.manage{border-left:3px solid var(--gold);box-shadow:0 0 0 1px #8cc7ff12 inset}
-.course-card{box-shadow:0 10px 28px #10285210,inset 0 0 0 1px #8cc7ff10}
-.course-card:hover{box-shadow:0 14px 34px #1028521a,inset 0 0 0 1px #79ffd624}
-.file-icon{border-radius:999px;box-shadow:0 0 0 1px #8cc7ff16 inset,0 0 18px #8cc7ff12}
-.searchbox,.manage-actions a,.theme{box-shadow:0 0 0 1px #8cc7ff10 inset}
-
-@media(max-width:900px){
-  .hero-copy{max-width:60%}
-  .hero::after{width:265px;height:265px;right:-28px;bottom:-58px}
-}
+:root[data-department=field] .hero::before{inset:12px;border:1px solid #b4a6cc24;border-radius:10px;pointer-events:none}
+:root[data-department=field] .hero::after{display:none}
+:root[data-department=field] .hero-copy{max-width:55%;flex:1 1 55%}
+:root[data-department=field] .hero .eyebrow{color:#cebedf;letter-spacing:.16em}
+:root[data-department=field] .hero h1{color:#fff7f0;text-shadow:0 2px 12px #000;font-style:italic}
+:root[data-department=field] .hero p:last-child{color:#d9d3e4;text-shadow:0 1px 8px #000}
+:root[data-department=field] .hero-graphic{width:39%;max-width:390px;position:relative;z-index:1;margin-left:auto;opacity:1;filter:drop-shadow(0 2px 3px #000) drop-shadow(0 0 10px #05040b)}
+:root[data-department=field] .course-card{border:1px solid var(--line);border-top:2px solid var(--accent);box-shadow:var(--shadow);border-radius:12px}
+:root[data-department=field] .course-card:nth-child(even){border-top-color:var(--gold)}
+:root[data-department=field] .course-card::after{display:none}
+:root[data-department=field] .course-card:hover{border-color:var(--accent)}
+:root[data-department=field] .course-num{font-style:italic}
+:root[data-department=field] .pagehead{border-bottom:1px solid var(--gold)}
+:root[data-department=field] :is(.pagehead .eyebrow,.section-head h2,.material-label,.subject-summary::before,.file-icon){color:var(--accent)}
+:root[data-department=field] :is(.subject-card[open],.folder:hover,.file:hover,.semester-link:hover,.semester-link[aria-current=page]){border-color:var(--gold)}
+:root[data-department=field] .manage{border-left:2px solid var(--gold)}
+:root[data-department=field] .footer{border-color:var(--line)}
+:root[data-department=field] .upload-submit{background:var(--accent);color:var(--paper)}
+@media(max-width:900px){:root[data-department=field] .hero{padding:32px;min-height:290px}}
 @media(max-width:650px){
-  .hero{padding:26px 20px;min-height:220px}
-  .hero-copy{max-width:100%}
-  .hero-graphic{width:80%;max-width:245px;margin:0 auto}
-  .hero::after{display:none}
-  .hero::before{mask-image:none;background-size:18px 18px}
+ :root[data-department=field] .hero{padding:27px 21px 18px;min-height:350px;gap:0;background-image:linear-gradient(180deg,#05060d 0%,#05060ded 34%,#05060d30 72%,#05060d00 100%),url('../art/field-deep-space.svg');background-position:center,center bottom;background-size:100% 100%,auto 68%}
+ :root[data-department=field] .hero-copy{max-width:100%;flex:1 1 100%}
+ :root[data-department=field] .hero-graphic{width:82%;max-width:260px;margin:0 auto}
+ :root[data-department=field] .brand strong{font-size:1.03rem}
 }
