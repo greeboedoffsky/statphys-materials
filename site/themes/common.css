@@ -1,3 +1,106 @@
-:root{--bg:#f4f7f7;--paper:#fff;--ink:#22363d;--muted:#5a6d72;--line:#dbe5e5;--accent:#346e76;--soft:#e6f1f1;--hero:#254b53;--red:#346e76;--green:#52756d;--hero-start:#254b53;--hero-end:#344b57;--gold:#52756d}
-:root[data-theme=dark]{--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#a2d9e0;--soft:#263e49;--hero:#254b53;--red:#a2d9e0;--green:#b7e2d3;--hero-start:#254b53;--hero-end:#344b57;--gold:#b7e2d3}
-@media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#a2d9e0;--soft:#263e49;--hero:#254b53;--red:#a2d9e0;--green:#b7e2d3;--hero-start:#254b53;--hero-end:#344b57;--gold:#b7e2d3}}
+/* Common archive — machine-typed catalogue on warm paper.
+   Loaded after the shared style sheet. No fonts or external images required. */
+:root[data-department="common"]{
+  color-scheme:light;
+  --bg:#eee4cf;--paper:#faf3e1;--ink:#302c25;--muted:#685f50;
+  --line:#c6b79b;--accent:#754032;--soft:#eadeca;
+  --hero:#f9efdb;--hero-ink:#302c25;--red:#754032;--green:#485c49;
+  --hero-start:#faf3e1;--hero-end:#efe2c5;--gold:#754032;
+  --rule:#bcab8f;--margin-ink:#a65b4d;--shadow:2px 3px 0 #6f5a3920;
+  --grain:#81633f09;--type-shadow:#6d503514;
+  font-family:"Courier New", "Liberation Mono", Courier, monospace;
+}
+:root[data-department="common"][data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#201c17;--paper:#30291f;--ink:#f0e3c9;--muted:#c2b39b;
+  --line:#62513b;--accent:#e2aa96;--soft:#42362a;
+  --hero:#362d21;--hero-ink:#f0e3c9;--red:#e2aa96;--green:#b8c6a7;
+  --hero-start:#392f23;--hero-end:#2c251c;--gold:#e2aa96;
+  --rule:#75634a;--margin-ink:#c08370;--shadow:2px 3px 0 #0005;
+  --grain:#e8c68d09;--type-shadow:transparent;
+}
+@media(prefers-color-scheme:dark){
+  :root[data-department="common"]:not([data-theme]){
+    color-scheme:dark;
+    --bg:#201c17;--paper:#30291f;--ink:#f0e3c9;--muted:#c2b39b;
+    --line:#62513b;--accent:#e2aa96;--soft:#42362a;
+    --hero:#362d21;--hero-ink:#f0e3c9;--red:#e2aa96;--green:#b8c6a7;
+    --hero-start:#392f23;--hero-end:#2c251c;--gold:#e2aa96;
+    --rule:#75634a;--margin-ink:#c08370;--shadow:2px 3px 0 #0005;
+    --grain:#e8c68d09;--type-shadow:transparent;
+  }
+}
+:root[data-department="common"] body{
+  background-color:var(--bg);
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,var(--grain) 3px 4px),radial-gradient(ellipse at 50% 0%,var(--paper),transparent 75%);
+  line-height:1.65;
+}
+:root[data-department="common"] :is(button,input,select,textarea){font-family:inherit}
+:root[data-department="common"] :is(.hero h1,.pagehead h1,.course-num,.course-card h3){font-family:inherit;letter-spacing:-.055em}
+:root[data-department="common"] .topbar{background:var(--paper);border-bottom:3px double var(--rule)}
+:root[data-department="common"] .brand{gap:0}
+:root[data-department="common"] .brand .mark{display:none}
+:root[data-department="common"] .brand strong{font-size:1.18rem;color:var(--ink);font-weight:700;letter-spacing:-.04em}
+:root[data-department="common"] .brand small{color:var(--muted);letter-spacing:.02em}
+:root[data-department="common"] .theme{border-radius:2px;border-color:var(--rule);box-shadow:var(--shadow)}
+:root[data-department="common"] #archives.archive-nav{border-radius:2px;background:var(--bg);border:1px solid var(--rule);gap:4px}
+:root[data-department="common"] #archives .archive-link{border-radius:1px;line-height:1.35;font-size:.78rem}
+:root[data-department="common"] #archives .archive-link::before{border-radius:0;width:3px;flex-basis:3px}
+:root[data-department="common"] #archives .archive-link[aria-current="page"]{color:var(--accent);border-color:var(--accent);box-shadow:inset 0 -2px var(--accent)}
+:root[data-department="common"] .hero{
+  min-height:260px;display:flex;align-items:center;
+  border:1px solid var(--rule);border-radius:2px;
+  padding:36px 42px 36px 68px;
+  color:var(--ink);
+  background:repeating-linear-gradient(0deg,transparent 0 27px,var(--grain) 27px 28px),linear-gradient(110deg,var(--hero-start),var(--hero-end));
+  box-shadow:4px 5px 0 var(--bg),5px 6px 0 var(--line);
+}
+:root[data-department="common"] .hero::before{content:"";position:absolute;inset:0 auto 0 35px;width:3px;height:auto;border:0;border-inline:1px solid var(--margin-ink);border-radius:0;opacity:.65;pointer-events:none;background:none}
+:root[data-department="common"] .hero::after{content:"ОБЩИЙ ФОНД";display:block;position:absolute;inset:auto 42px 38px auto;width:auto;height:auto;max-width:40%;padding:7px 14px;background:none;border:3px double var(--accent);border-radius:1px;color:var(--accent);font-size:clamp(.85rem,1.5vw,1.15rem);font-weight:700;letter-spacing:.12em;transform:rotate(-7deg);opacity:.76;pointer-events:none;z-index:0}
+:root[data-department="common"] .hero-copy{max-width:70%;z-index:1}
+:root[data-department="common"] .hero .eyebrow{color:var(--accent);font-size:.73rem;letter-spacing:.12em}
+:root[data-department="common"] .hero h1{color:var(--ink);font-weight:700;font-size:clamp(1.9rem,4.1vw,3.2rem);line-height:1.15;text-shadow:.5px .5px var(--type-shadow)}
+:root[data-department="common"] .hero p:last-child{color:var(--muted);font-size:.96rem;line-height:1.7;max-width:570px}
+:root[data-department="common"] .hero-graphic{display:none}
+:root[data-department="common"] .section-head{border-bottom:1px dashed var(--rule);padding-bottom:7px}
+:root[data-department="common"] .section-head h2{color:var(--ink);font-size:1.05rem;letter-spacing:0}
+:root[data-department="common"] .course-card{border-radius:2px;border:1px solid var(--rule);border-top:3px double var(--rule);background:var(--paper);box-shadow:var(--shadow);padding:22px 24px}
+:root[data-department="common"] .course-card:nth-child(even){border-top-color:var(--rule)}
+:root[data-department="common"] .course-card:hover{border-color:var(--accent)}
+:root[data-department="common"] .course-card::after{display:none}
+:root[data-department="common"] .course-num{font-size:2rem;color:var(--accent);font-weight:700}
+:root[data-department="common"] .course-card:nth-child(even) .course-num{color:var(--accent)}
+:root[data-department="common"] .course-card h3{font-size:1.08rem}
+:root[data-department="common"] :is(.semester-link,.searchbox,.subject-card,.folder,.file,.empty,.manage,.manage-actions a,.upload-open,.upload-submit,.upload-dialog,.upload-form select,.upload-form input,.upload-drop){border-radius:2px}
+:root[data-department="common"] .semester-link{border:1px solid var(--line);background:transparent;font-size:.83rem;line-height:1.4}
+:root[data-department="common"] .semester-link:hover,:root[data-department="common"] .semester-link[aria-current="page"]{background:var(--soft);color:var(--accent);border-color:var(--accent);box-shadow:none}
+:root[data-department="common"] .pagehead{border-bottom:3px double var(--rule)}
+:root[data-department="common"] .pagehead h1{font-weight:700;line-height:1.2}
+:root[data-department="common"] .sidebar nav a{border-radius:0}
+:root[data-department="common"] .subject-card{border-color:var(--line)}
+:root[data-department="common"] .subject-card[open]{border-color:var(--accent)}
+:root[data-department="common"] .subject-summary::before{color:var(--accent)}
+:root[data-department="common"] .file-icon{border-radius:0;background:var(--soft);color:var(--accent)}
+:root[data-department="common"] .footer{border-top:3px double var(--rule)}
+:root[data-department="common"] .upload-submit{color:var(--paper);background:var(--accent)}
+:root[data-department="common"] .upload-form progress{accent-color:var(--accent)}
+@media(max-width:900px){
+  :root[data-department="common"] .hero-copy{max-width:100%}
+  :root[data-department="common"] .hero{padding-bottom:78px}
+  :root[data-department="common"] .hero::after{bottom:20px;right:24px;max-width:none}
+}
+@media(max-width:650px){
+  :root[data-department="common"] .hero{padding:24px 20px 76px 33px;min-height:220px}
+  :root[data-department="common"] .hero::before{left:17px}
+  :root[data-department="common"] .hero::after{right:18px;bottom:18px;padding:4px 9px;font-size:.78rem}
+  :root[data-department="common"] .hero h1{font-size:clamp(1.6rem,7.2vw,2.2rem);overflow-wrap:anywhere}
+  :root[data-department="common"] .hero p:last-child{font-size:.84rem}
+  :root[data-department="common"] .brand strong{font-size:1.05rem}
+  :root[data-department="common"] .brand small{font-size:.69rem}
+  :root[data-department="common"] .course-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+  :root[data-department="common"] .course-card{padding:15px}
+  :root[data-department="common"] #archives .archive-link{font-size:.73rem;overflow-wrap:anywhere}
+  :root[data-department="common"] .subject-summary .meta{white-space:normal;text-align:right;flex:0 0 auto;max-width:32%}
+  :root[data-department="common"] .download{flex:none}
+}
+@media(prefers-reduced-motion:reduce){:root[data-department="common"] *{transition:none!important}}
