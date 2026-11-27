@@ -1,3 +1,85 @@
-:root{--bg:#f6f3fb;--paper:#fff;--ink:#312442;--muted:#665b76;--line:#e0d8ec;--accent:#6a4794;--soft:#eee7f7;--hero:#40315e;--red:#6a4794;--green:#39777a;--hero-start:#46315f;--hero-end:#263e56;--gold:#39777a}
-:root[data-theme=dark]{--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#cbb0f2;--soft:#263e49;--hero:#40315e;--red:#cbb0f2;--green:#96d7d4;--hero-start:#46315f;--hero-end:#263e56;--gold:#96d7d4}
-@media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#cbb0f2;--soft:#263e49;--hero:#40315e;--red:#cbb0f2;--green:#96d7d4;--hero-start:#46315f;--hero-end:#263e56;--gold:#96d7d4}}
+/* 8-bit theme: this stylesheet is loaded only for mathematical physics. */
+:root {
+  --bg:#e9e5f0; --paper:#fffdf5; --ink:#27243b; --muted:#61576d;
+  --line:#91859f; --accent:#5a338d; --soft:#e9ddf8;
+  --red:#6840a4; --green:#116b64; --gold:#116b64;
+  --hero:#211b39; --hero-start:#211b39; --hero-end:#30224d;
+  --hero-ink:#fff4d9; --shadow:4px 4px 0 #a99ab9;
+  --pixel:#b8a8d0; --pixel-hi:#7651a9; --panel:#d7cce5;
+  --retro-font:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+}
+:root[data-theme=dark] {
+  --bg:#121020; --paper:#211d34; --ink:#f4eafa; --muted:#c3b3d7;
+  --line:#66547c; --accent:#d9b4ff; --soft:#302447;
+  --red:#c2a1ff; --green:#75e8c9; --gold:#75e8c9;
+  --hero:#211b39; --hero-start:#211b39; --hero-end:#30224d;
+  --shadow:4px 4px 0 #090710; --pixel:#66547c; --pixel-hi:#a78adc; --panel:#1c172e;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#121020; --paper:#211d34; --ink:#f4eafa; --muted:#c3b3d7;
+  --line:#66547c; --accent:#d9b4ff; --soft:#302447;
+  --red:#c2a1ff; --green:#75e8c9; --gold:#75e8c9;
+  --hero:#211b39; --hero-start:#211b39; --hero-end:#30224d;
+  --shadow:4px 4px 0 #090710; --pixel:#66547c; --pixel-hi:#a78adc; --panel:#1c172e;
+}}
+html[data-department=math] body{
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--pixel) 1px,transparent 1px);
+  background-size:16px 16px;
+}
+html[data-department=math] .topbar{border-bottom:3px solid var(--pixel-hi)}
+html[data-department=math] .brand{gap:12px}
+html[data-department=math] .brand strong{font-family:var(--retro-font);letter-spacing:-.045em;font-weight:800}
+/* Pixel sigma instead of the stock atom mark. */
+html[data-department=math] .mark{border-radius:0;border:2px solid var(--accent);background:var(--soft);position:relative;flex:none;box-shadow:3px 3px 0 var(--pixel)}
+html[data-department=math] .mark svg{display:none}
+html[data-department=math] .mark::before{content:'';display:block;width:28px;height:28px;background:currentColor;clip-path:polygon(0 0,100% 0,100% 14%,28% 14%,28% 28%,42% 28%,42% 42%,56% 42%,56% 58%,42% 58%,42% 72%,28% 72%,28% 86%,100% 86%,100% 100%,0 100%,0 86%,14% 86%,14% 72%,28% 72%,28% 58%,42% 58%,42% 42%,28% 42%,28% 28%,14% 28%,14% 14%,0 14%)}
+html[data-department=math] #archives.archive-nav{border-radius:0}
+html[data-department=math] #archives .archive-link{border-radius:0}
+html[data-department=math] #archives .archive-link::before{border-radius:0}
+html[data-department=math] #archives .archive-link[aria-current=page]{box-shadow:inset 0 -4px var(--archive-color)}
+html[data-department=math] .theme{border-radius:0;border-width:2px;box-shadow:2px 2px 0 var(--pixel);flex:none}
+html[data-department=math] .hero{
+  border:3px solid #67518d;border-radius:0;box-shadow:6px 6px 0 var(--pixel);
+  background:repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 5px),linear-gradient(120deg,#201934,#30224d);
+  padding:36px;gap:18px;min-height:270px;
+}
+html[data-department=math] .hero::before{inset:8px;border-radius:0;border:2px dashed #a78adc50}
+html[data-department=math] .hero .eyebrow{font-family:var(--retro-font);color:#8af3cf;letter-spacing:.09em}
+html[data-department=math] .hero h1{font-family:var(--retro-font);font-weight:800;letter-spacing:-.07em;line-height:1.12;color:#fff0c9;text-shadow:3px 3px 0 #754eaa;font-size:clamp(1.8rem,3.8vw,3.1rem)}
+html[data-department=math] .hero p:last-child{color:#e4d9f6}
+html[data-department=math] .hero-copy{max-width:58%}
+html[data-department=math] .hero-graphic{image-rendering:pixelated;width:38%;max-width:390px;position:relative;z-index:1}
+html[data-department=math] .searchbox,html[data-department=math] .course-card,html[data-department=math] .semester-link,
+html[data-department=math] .subject-card,html[data-department=math] .folder,html[data-department=math] .file,
+html[data-department=math] .empty,html[data-department=math] .manage,html[data-department=math] .upload-dialog,
+html[data-department=math] .upload-open,html[data-department=math] .upload-submit,html[data-department=math] .upload-form select,
+html[data-department=math] .upload-form input[type=password],html[data-department=math] .upload-drop,
+html[data-department=math] .file-icon,html[data-department=math] .manage-actions a,html[data-department=math] .sidebar nav a{border-radius:0}
+html[data-department=math] .searchbox{border-width:2px;box-shadow:3px 3px 0 var(--pixel)}
+html[data-department=math] .course-grid{gap:20px}
+html[data-department=math] .course-card{border:2px solid var(--pixel-hi);border-top:6px solid var(--red);box-shadow:var(--shadow);padding:19px 22px;transition:none}
+html[data-department=math] .course-card:nth-child(even){border-top-color:var(--green)}
+html[data-department=math] .course-card::after{display:none}
+html[data-department=math] .course-num{font-family:var(--retro-font);font-weight:900;letter-spacing:-.1em;font-size:2.6rem;text-shadow:2px 2px 0 var(--pixel)}
+html[data-department=math] .card-top::after{content:'КУРС';font-family:var(--retro-font);font-size:.72rem;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);padding:3px 7px;background:var(--soft)}
+html[data-department=math] .course-card h3{font-family:var(--retro-font);margin-top:12px}
+html[data-department=math] .semester-link{border:2px solid var(--line);position:relative;padding-left:26px;box-shadow:2px 2px 0 var(--pixel);font-weight:600}
+html[data-department=math] .semester-link::before{content:'';position:absolute;left:10px;top:50%;transform:translateY(-50%);width:8px;height:12px;background:var(--green);clip-path:polygon(0 0,33% 0,33% 25%,66% 25%,66% 42%,100% 42%,100% 58%,66% 58%,66% 75%,33% 75%,33% 100%,0 100%)}
+html[data-department=math] .semester-link:hover,html[data-department=math] .semester-link[aria-current=page]{border-color:var(--green);box-shadow:2px 2px 0 var(--green);background:var(--soft)}
+html[data-department=math] .pagehead h1,html[data-department=math] .section-head h2{font-family:var(--retro-font);font-weight:750;letter-spacing:-.04em}
+html[data-department=math] .section-head h2{color:var(--accent)}
+html[data-department=math] .subject-card{border-width:2px}
+html[data-department=math] .subject-card[open]{box-shadow:3px 3px 0 var(--pixel)}
+html[data-department=math] .subject-summary::before{font-family:var(--retro-font);font-weight:bold}
+html[data-department=math] .footer{border-top:2px solid var(--pixel-hi)}
+@media(max-width:650px){
+  html[data-department=math] .hero{padding:24px 20px;gap:10px;min-height:0}
+  html[data-department=math] .hero-copy{max-width:100%}
+  html[data-department=math] .hero h1{font-size:clamp(1.6rem,6.9vw,2.2rem)}
+  html[data-department=math] .hero-graphic{width:80%;max-width:260px;margin:0 auto}
+  html[data-department=math] .course-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  html[data-department=math] .course-card{padding:16px 18px}
+  html[data-department=math] .course-num{font-size:2.15rem}
+  html[data-department=math] .brand strong{font-size:.95rem}
+}
