@@ -263,7 +263,14 @@ function render() {
   if(!node){content.append(el('h1','','Раздел не найден'),el('p','','Возможно, он был перемещён или удалён.'),link('Вернуться к списку курсов','#/'));return;}
   document.title=`${displayPath(node)} — ${department.name}`;course(node,ancestors);
 }
-const switcher=document.getElementById('archives'); for(const archive of data.archives){const a=link(archive.name,archive.url,'archive-link');if(archive.id===department.id)a.setAttribute('aria-current','page');switcher.append(a);}
+// One shared department switcher, with identity independent of the active theme.
+const switcher=document.getElementById('archives');
+for(const archive of data.archives){
+  const a=link(archive.name,archive.url,'archive-link');
+  a.dataset.archive=archive.id;
+  if(archive.id===department.id)a.setAttribute('aria-current','page');
+  switcher.append(a);
+}
 if(repo){const a=document.getElementById('repo-link');a.href=repo;a.hidden=false;}
 try {const saved=localStorage.getItem('physics-engine-theme');if(['dark','light'].includes(saved))document.documentElement.dataset.theme=saved;}catch{}
 const theme=document.getElementById('theme');
