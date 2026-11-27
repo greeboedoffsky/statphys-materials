@@ -254,6 +254,8 @@ function render() {
   let parts;try{parts=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean).map(decodeURIComponent);}catch{parts=['invalid'];}
   content.replaceChildren();
   const year=parts[0];
+  // The department switcher belongs to the archive homepage only.
+  document.getElementById('archives').hidden = Boolean(year);
   document.querySelector('.layout').classList.toggle('home-layout', !year);
   document.querySelector('.sidebar').hidden = !year;
   document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===(year||'home'))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
