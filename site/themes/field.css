@@ -1,3 +1,94 @@
-:root{--bg:#f4f5f9;--paper:#fff;--ink:#222b41;--muted:#59647b;--line:#d8dfea;--accent:#455b9b;--soft:#e6ebf7;--hero:#242f59;--red:#455b9b;--green:#a36b34;--hero-start:#243357;--hero-end:#3b2d56;--gold:#a36b34}
-:root[data-theme=dark]{--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#aebff7;--soft:#263e49;--hero:#242f59;--red:#aebff7;--green:#f3c795;--hero-start:#243357;--hero-end:#3b2d56;--gold:#f3c795}
-@media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#aebff7;--soft:#263e49;--hero:#242f59;--red:#aebff7;--green:#f3c795;--hero-start:#243357;--hero-end:#3b2d56;--gold:#f3c795}}
+:root{
+  --bg:#f4f7fb;
+  --paper:#ffffff;
+  --ink:#122338;
+  --muted:#5d6f86;
+  --line:#d8e0ef;
+  --accent:#7e8cff;
+  --soft:#ecf1fb;
+  --hero:#081528;
+  --red:#9eb3ff;
+  --green:#dbc47a;
+  --hero-start:#081528;
+  --hero-end:#13274a;
+  --gold:#dbc47a;
+}
+:root[data-theme=dark]{
+  --bg:#09111c;
+  --paper:#101b2b;
+  --ink:#ecf4ff;
+  --muted:#a7bad4;
+  --line:#263754;
+  --accent:#aab8ff;
+  --soft:#16253b;
+  --hero:#081528;
+  --red:#b5c1ff;
+  --green:#f0d890;
+  --hero-start:#07111e;
+  --hero-end:#13274a;
+  --gold:#f0d890;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#09111c;--paper:#101b2b;--ink:#ecf4ff;--muted:#a7bad4;--line:#263754;--accent:#aab8ff;--soft:#16253b;--hero:#081528;--red:#b5c1ff;--green:#f0d890;--hero-start:#07111e;--hero-end:#13274a;--gold:#f0d890;
+}}
+
+/* Убираем графический значок в шапке. */
+.mark{display:none}
+.brand{gap:0}
+.brand strong{color:var(--accent)}
+
+/* Космическая шапка с акцентом на функциональный интеграл. */
+.hero{
+  background:
+    radial-gradient(circle at 16% 22%, #fff8 0 1px, transparent 1.5px),
+    radial-gradient(circle at 26% 66%, #fff6 0 1px, transparent 1.6px),
+    radial-gradient(circle at 46% 18%, #ffe7a3cc 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 62% 34%, #fff6 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 79% 19%, #b8cfffaa 0 1px, transparent 1.7px),
+    radial-gradient(circle at 84% 74%, #fff8 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 14% 84%, #b8cfff99 0 1px, transparent 1.7px),
+    linear-gradient(135deg,var(--hero-start),var(--hero-end));
+  border:1px solid #ffffff14;
+  box-shadow:inset 0 1px 0 #ffffff18;
+}
+.hero::before{
+  content:'';position:absolute;inset:14px;border-radius:14px;border:1px solid #ffffff14;pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;right:6%;top:14%;width:300px;height:300px;border-radius:50%;
+  background:
+    radial-gradient(circle at center, #ffffff10 0 33%, transparent 34%),
+    radial-gradient(circle at center, transparent 0 56%, #c9d8ff18 57% 58%, transparent 59%),
+    radial-gradient(circle at center, transparent 0 73%, #f0d89016 74% 75%, transparent 76%);
+  filter:blur(.2px);
+  pointer-events:none;
+}
+.hero .eyebrow{color:#cbd8ff}
+.hero h1{color:#f6f8ff}
+.hero p:last-child{color:#d9e3f6}
+.hero-copy{max-width:min(560px,58%)}
+.hero-graphic{width:34%;max-width:320px;filter:drop-shadow(0 12px 32px #0005)}
+
+.archive-link[aria-current=page],
+.sidebar nav a:hover,.sidebar nav a[aria-current=page],
+.semester-link:hover,.semester-link[aria-current=page],
+.subject-card[open],.folder:hover,.file:hover,.manage-actions a:hover{
+  border-color:var(--gold);
+}
+.archive-link[aria-current=page],.semester-link[aria-current=page]{color:var(--gold)}
+.pagehead{border-bottom:2px solid var(--gold)}
+.pagehead .eyebrow,.section-head h2,.material-label,.subject-summary::before,.file-icon,.course-num{color:var(--accent)}
+.subject-summary:hover,.archive-link:hover,.semester-link:hover,.sidebar nav a:hover,.sidebar nav a[aria-current=page]{background:var(--soft)}
+.manage{border-left:3px solid var(--gold)}
+
+@media(max-width:900px){
+  .hero-copy{max-width:60%}
+  .hero::after{right:-10px;width:220px;height:220px}
+}
+@media(max-width:650px){
+  .hero{padding:26px 20px;min-height:220px}
+  .hero-copy{max-width:100%}
+  .hero-graphic{width:72%;max-width:230px;margin:0 auto}
+  .hero::after{display:none}
+}
