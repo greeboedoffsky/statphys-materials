@@ -16,9 +16,6 @@ function link(text, href, cls) {
 function external(text, href) {
   const a = link(text, href); a.target = '_blank'; a.rel = 'noopener noreferrer'; return a;
 }
-const plural = (n, one, few, many) => `${n} ${n % 100 >= 11 && n % 100 <= 14 ? many : n % 10 === 1 ? one : n % 10 >= 2 && n % 10 <= 4 ? few : many}`;
-const filesCount = n => plural(n, 'файл', 'файла', 'файлов');
-const foldersCount = n => plural(n, 'раздел', 'раздела', 'разделов');
 const bytes = n => n < 1024 ? `${n} Б` : n < 1024 ** 2 ? `${(n / 1024).toLocaleString('ru', {maximumFractionDigits: 1})} КБ` : `${(n / 1024 ** 2).toLocaleString('ru', {maximumFractionDigits: 1})} МБ`;
 const norm = str => str.toLocaleLowerCase('ru').replaceAll('ё', 'е');
 const icons = {
@@ -48,7 +45,8 @@ function fileRow(file, node, showPath=false) {
 function folderRow(node, showPath=false) {
   const a = link('',route(node.path),'folder');
   const icon = el('span','file-icon'); icon.innerHTML = icons.folder;
-  const info = el('span','file-main'); info.append(el('strong','',node.name),el('small','',`${filesCount(node.count)} · ${foldersCount(node.folders.length)}${showPath ? ' · ' + displayPath(node) : ''}`));
+  const info = el('span','file-main'); info.append(el('strong','',node.name));
+  if(showPath) info.append(el('small','',displayPath(node)));
   a.append(icon,info,el('span','arrow','→')); return a;
 }
 function searchBox(nodes, normalContent, placeholder) {
@@ -65,7 +63,7 @@ function searchBox(nodes, normalContent, placeholder) {
     const match=s=>terms.every(t=>norm(s).includes(t));
     const ff=files.filter(({file,node})=>match(file.name+' '+displayPath(node)+' '+file.type));
     const dd=folders.filter(node=>!categoryNames.has(node.name) && !materialNames.has(node.name) && match(displayPath(node)));
-    results.append(heading('Результаты поиска',`${foldersCount(dd.length)} · ${filesCount(ff.length)}`));
+    results.append(heading('Результаты поиска'));
     if (!ff.length && !dd.length) { results.append(el('div','empty','Ничего не найдено. Попробуйте другое название или формат файла.')); return; }
     if(dd.length){const list=el('div','folder-list');dd.forEach(node=>list.append(folderRow(node,true)));results.append(list);}
     if(ff.length){const list=el('div','file-list');ff.forEach(({file,node})=>list.append(fileRow(file,node,true)));if(dd.length)list.style.marginTop='12px';results.append(list);}
@@ -99,11 +97,11 @@ function home() {
   copy.append(el('p','eyebrow','Образовательный архив / 3–6 курс'),el('h1','','Учебные материалы'),el('p','','Лекции, семинары, задачи и литература для студентов кафедры статистической физики. Выберите семестр или найдите нужный материал.'));
   hero.append(copy); hero.insertAdjacentHTML('beforeend',icons.hero); content.append(hero);
   const normal=el('div'); const nodes=Object.values(data.courses);
-  normal.append(heading('Выберите семестр',filesCount(nodes.reduce((sum,n)=>sum+n.count,0))+' в архиве'));
+  normal.append(heading('Выберите семестр'));
   const grid=el('div','course-grid');
   for (const [year,node] of Object.entries(data.courses)) {
     const card=el('section','course-card'), top=el('div','card-top');
-    top.append(el('span','course-num',year.padStart(2,'0')),el('span','meta',filesCount(node.count)));
+    top.append(el('span','course-num',year.padStart(2,'0')));
     const h=el('h3');h.append(link(`${year} курс`,route(year)));card.append(top,h,semesterLinks(node));grid.append(card);
   }
   normal.append(grid); searchBox(nodes,normal,'Название файла, дисциплины или формат…');
@@ -117,7 +115,7 @@ function fileList(container,node,recursive=true) {
 }
 function subjectCard(node) {
   const details=el('details','subject-card');details.dataset.available=String(node.count>0);
-  const summary=el('summary','subject-summary');summary.append(el('span','subject-name',node.name),el('span','meta',filesCount(node.count)));details.append(summary);
+  const summary=el('summary','subject-summary');summary.append(el('span','subject-name',node.name));details.append(summary);
   const body=el('div','subject-body');if(!fileList(body,node))body.append(el('p','results-note','Материалы пока не добавлены.'));
   const actions=el('div','subject-actions');actions.append(link('Ссылка на раздел',route(node.path)));
   if(repo){const tail=encodeURIComponent(data.branch)+'/materials/'+enc(node.path);actions.append(external('Добавить материалы ↗',`${repo}/tree/${tail}`));}
@@ -152,7 +150,7 @@ function course(node, ancestors) {
   const crumb=el('nav','breadcrumb');crumb.setAttribute('aria-label','Хлебные крошки');crumb.append(link('Все материалы','#/'),el('span','','/'),link(`${root.name} курс`,route(root.path)));
   if(selected&&!isSemester)crumb.append(el('span','','/'),link(selected.name,route(selected.path)));
   content.append(crumb);
-  const head=el('header','pagehead');head.append(el('p','eyebrow',`${root.name} курс / учебные материалы`),el('h1','',isSemester?`${root.name} курс`:isCourse?`${root.name} курс`:target.name),el('p','',filesCount(target.count)+' в разделе'));content.append(head);
+  const head=el('header','pagehead');head.append(el('p','eyebrow',`${root.name} курс / учебные материалы`),el('h1','',isSemester?`${root.name} курс`:isCourse?`${root.name} курс`:target.name));content.append(head);
   if(orderedSemesters(root).length)content.append(semesterLinks(root,selected));
   let normal;
   if(isSemester){normal=semesterContent(target);
@@ -166,6 +164,8 @@ function render() {
   let parts;try{parts=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean).map(decodeURIComponent);}catch{parts=['invalid'];}
   content.replaceChildren();
   const year=parts[0];
+  document.querySelector('.layout').classList.toggle('home-layout', !year);
+  document.querySelector('.sidebar').hidden = !year;
   document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===(year||'home'))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   if(!year){document.title='Учебные материалы — Статистическая физика';home();return;}
   let node=Object.hasOwn(data.courses,year)?data.courses[year]:null;const ancestors=node?[node]:[];
