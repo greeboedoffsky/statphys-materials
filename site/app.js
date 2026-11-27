@@ -64,7 +64,7 @@ function searchBox(nodes, normalContent, placeholder) {
     if (!terms.length) return;
     const match=s=>terms.every(t=>norm(s).includes(t));
     const ff=files.filter(({file,node})=>match(file.name+' '+displayPath(node)+' '+file.type));
-    const dd=folders.filter(node=>match(displayPath(node)));
+    const dd=folders.filter(node=>!categoryNames.has(node.name) && !materialNames.has(node.name) && match(displayPath(node)));
     results.append(heading('Результаты поиска',`${foldersCount(dd.length)} · ${filesCount(ff.length)}`));
     if (!ff.length && !dd.length) { results.append(el('div','empty','Ничего не найдено. Попробуйте другое название или формат файла.')); return; }
     if(dd.length){const list=el('div','folder-list');dd.forEach(node=>list.append(folderRow(node,true)));results.append(list);}
@@ -82,31 +82,84 @@ function manage(node) {
   panel.append(actions,el('p','results-note','Для нового раздела в GitHub укажите имя файла в виде «Название раздела/.gitkeep».'));
   return panel;
 }
+const categoryNames = new Set(['Базовая часть','Статистическая физика — профильные дисциплины по выбору','Общие дисциплины по выбору','Практика и НИР','Итоговая аттестация']);
+const materialNames = new Set(['Лекции','Семинары и задачи','Литература']);
+const orderedSemesters = node => [...node.folders].filter(n=>/^\d+ семестр/.test(n.name)).sort((a,b)=>parseInt(a.name)-parseInt(b.name));
+function semesterLinks(course, selected) {
+  const bar=el('nav','semester-links');bar.setAttribute('aria-label','Семестры');
+  for(const sem of orderedSemesters(course)) {
+    const a=link(sem.name,route(sem.path),'semester-link');
+    if(selected?.path===sem.path)a.setAttribute('aria-current','page');
+    bar.append(a);
+  }
+  return bar;
+}
 function home() {
   const hero=el('section','hero'); const copy=el('div','hero-copy');
-  copy.append(el('p','eyebrow','Образовательный архив / 3–6 курс'),el('h1','','Учебные материалы'),el('p','','Лекции, семинары, задачи и литература для студентов кафедры статистической физики. Выберите курс или найдите нужный материал.'));
+  copy.append(el('p','eyebrow','Образовательный архив / 3–6 курс'),el('h1','','Учебные материалы'),el('p','','Лекции, семинары, задачи и литература для студентов кафедры статистической физики. Выберите семестр или найдите нужный материал.'));
   hero.append(copy); hero.insertAdjacentHTML('beforeend',icons.hero); content.append(hero);
   const normal=el('div'); const nodes=Object.values(data.courses);
-  normal.append(heading('Выберите курс',filesCount(nodes.reduce((sum,n)=>sum+n.count,0))+' в архиве'));
+  normal.append(heading('Выберите семестр',filesCount(nodes.reduce((sum,n)=>sum+n.count,0))+' в архиве'));
   const grid=el('div','course-grid');
   for (const [year,node] of Object.entries(data.courses)) {
-    const card=link('',route(year),'course-card'), top=el('div','card-top');
-    top.append(el('span','course-num',year.padStart(2,'0')),el('span','arrow','→'));
-    card.append(top,el('h3','',`${year} курс`),el('p','',`${year*2-1}–${year*2} семестры · ${filesCount(node.count)}`));grid.append(card);
+    const card=el('section','course-card'), top=el('div','card-top');
+    top.append(el('span','course-num',year.padStart(2,'0')),el('span','meta',filesCount(node.count)));
+    const h=el('h3');h.append(link(`${year} курс`,route(year)));card.append(top,h,semesterLinks(node));grid.append(card);
   }
   normal.append(grid); searchBox(nodes,normal,'Название файла, дисциплины или формат…');
-  if(repo){const note=el('section','manage');note.append(el('h2','','Добавление материалов'),el('p','','Выберите нужный курс, семестр и раздел, затем воспользуйтесь ссылками на GitHub.'));content.append(note);}
+}
+function fileList(container,node,recursive=true) {
+  const entries=recursive?allFiles(node):node.files.map(file=>({file,node}));
+  const groups=new Map();
+  for(const entry of entries){const name=entry.node.path===node.path?'':entry.node.path.slice(node.path.length+1);if(!groups.has(name))groups.set(name,[]);groups.get(name).push(entry);}
+  for(const [name,items] of groups){if(name)container.append(el('h4','material-label',name.replaceAll('/',' · ')));const list=el('div','file-list');items.forEach(({file,node})=>list.append(fileRow(file,node)));container.append(list);}
+  return entries.length;
+}
+function subjectCard(node) {
+  const details=el('details','subject-card');details.dataset.available=String(node.count>0);
+  const summary=el('summary','subject-summary');summary.append(el('span','subject-name',node.name),el('span','meta',filesCount(node.count)));details.append(summary);
+  const body=el('div','subject-body');if(!fileList(body,node))body.append(el('p','results-note','Материалы пока не добавлены.'));
+  const actions=el('div','subject-actions');actions.append(link('Ссылка на раздел',route(node.path)));
+  if(repo){const tail=encodeURIComponent(data.branch)+'/materials/'+enc(node.path);actions.append(external('Добавить материалы ↗',`${repo}/tree/${tail}`));}
+  body.append(actions);details.append(body);return details;
+}
+function semesterContent(node) {
+  const normal=el('div','semester-content');
+  const controls=el('div','flat-controls');const label=el('label','available-filter');const check=el('input');check.type='checkbox';label.append(check,document.createTextNode('Только разделы с файлами'));controls.append(label);normal.append(controls);
+  const groups=el('div','subject-groups');normal.append(groups);
+  if(node.files.length){const block=el('section','subject-group');block.append(heading('Файлы семестра'));fileList(block,node,false);groups.append(block);}
+  const direct=node.folders.filter(n=>!categoryNames.has(n.name) && !materialNames.has(n.name));
+  for(const cat of node.folders.filter(n=>categoryNames.has(n.name))){
+    const group=el('section','subject-group');group.append(heading(cat.name));
+    if(cat.files.length)fileList(group,cat,false);
+    for(const subject of cat.folders)group.append(subjectCard(subject));
+    if(!cat.files.length&&!cat.folders.length)group.append(subjectCard(cat));
+    groups.append(group);
+  }
+  const other=[...direct,...node.folders.filter(n=>materialNames.has(n.name)&&n.count>0)];
+  if(other.length){const group=el('section','subject-group');group.append(heading('Другие материалы'));other.forEach(n=>group.append(subjectCard(n)));groups.append(group);}
+  const empty=el('div','empty','В этом семестре пока нет загруженных файлов.');empty.hidden=true;normal.append(empty);
+  check.addEventListener('change',()=>{groups.querySelectorAll('.subject-card').forEach(d=>d.hidden=check.checked&&d.dataset.available==='false');groups.querySelectorAll('.subject-group').forEach(g=>g.hidden=check.checked&&!g.querySelector('.file, .subject-card:not([hidden])')); // direct file rows and nonempty cards
+    // Empty cards have no file rows; keep a group only if any visible card or a direct file exists.
+    empty.hidden=!(check.checked&&node.count===0);});
+  return normal;
 }
 function course(node, ancestors) {
-  const crumb=el('nav','breadcrumb');crumb.setAttribute('aria-label','Хлебные крошки');crumb.append(link('Все материалы','#/'));
-  ancestors.forEach((n,i)=>{crumb.append(el('span','','/')); const label=i===0?`${n.name} курс`:n.name;if(i===ancestors.length-1){const current=el('span','',label);current.setAttribute('aria-current','page');crumb.append(current);}else crumb.append(link(label,route(n.path)));});
+  const root=ancestors[0];const isCourse=ancestors.length===1;
+  const selected=isCourse?orderedSemesters(root)[0]:ancestors[1];
+  const isSemester=!!selected&&(isCourse||ancestors.length===2)&&/^\d+ семестр/.test(selected.name);
+  const target=isSemester?selected:node;
+  const crumb=el('nav','breadcrumb');crumb.setAttribute('aria-label','Хлебные крошки');crumb.append(link('Все материалы','#/'),el('span','','/'),link(`${root.name} курс`,route(root.path)));
+  if(selected&&!isSemester)crumb.append(el('span','','/'),link(selected.name,route(selected.path)));
   content.append(crumb);
-  const head=el('header','pagehead');head.append(el('p','eyebrow',`${ancestors[0].name} курс / учебные материалы`),el('h1','',ancestors.length===1?`${node.name} курс`:node.name),el('p','',`${foldersCount(node.folders.length)} · ${filesCount(node.count)} с учётом подразделов`));content.append(head);
-  const normal=el('div');
-  if(node.folders.length){normal.append(heading(ancestors.length===1?'Семестры':'Разделы'));const list=el('div','folder-list');node.folders.forEach(n=>list.append(folderRow(n)));normal.append(list);}
-  if(node.files.length){normal.append(heading('Файлы',filesCount(node.files.length)));const list=el('div','file-list');node.files.forEach(f=>list.append(fileRow(f,node)));normal.append(list);}
-  if(!node.files.length && !node.folders.length){normal.append(el('div','empty','В этом разделе пока нет учебных материалов.'));}
-  searchBox([node],normal,'Поиск в этом разделе и подразделах…');content.append(manage(node));
+  const head=el('header','pagehead');head.append(el('p','eyebrow',`${root.name} курс / учебные материалы`),el('h1','',isSemester?`${root.name} курс`:isCourse?`${root.name} курс`:target.name),el('p','',filesCount(target.count)+' в разделе'));content.append(head);
+  if(orderedSemesters(root).length)content.append(semesterLinks(root,selected));
+  let normal;
+  if(isSemester){normal=semesterContent(target);
+    if(isCourse){const extra=root.folders.filter(n=>!orderedSemesters(root).includes(n));if(root.files.length||extra.length){const group=el('section','subject-group');group.append(heading('Общие материалы курса'));fileList(group,root,false);extra.forEach(n=>group.append(subjectCard(n)));normal.append(group);}}
+  }else{normal=el('div');if(!fileList(normal,target))normal.append(el('div','empty','В этом разделе пока нет учебных материалов.'));if(target.folders.length){normal.append(heading('Подразделы'));const list=el('div','folder-list');target.folders.forEach(n=>list.append(folderRow(n)));normal.append(list);}}
+  searchBox([isCourse?root:target],normal,isCourse?'Поиск по обоим семестрам курса…':'Название дисциплины, файла или формат…');
+  const admin=el('details','admin-panel');admin.append(el('summary','','Управление материалами'),manage(target));content.append(admin);
 }
 function render() {
   if(location.hash==='#main'){document.getElementById('main').focus();return;}

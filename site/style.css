@@ -66,3 +66,14 @@
   .hero h1 {font-size:clamp(1.9rem,7vw,2.3rem);}
   .course-card::after {display:none;}
 }
+
+/* Compact semester navigation; catalogue folders remain unchanged. */
+.semester-links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;position:relative;z-index:1}
+.semester-link{display:block;flex:1 1 160px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);font-size:.85rem;font-weight:650;color:var(--ink);overflow-wrap:anywhere}
+.semester-link:hover,.semester-link[aria-current=page]{background:var(--soft);border-color:var(--green);color:var(--green);text-decoration:none}
+.semester-link[aria-current=page]{box-shadow:inset 0 -2px var(--green)}
+.course-card:hover{transform:none}.course-card h3 a{color:var(--ink)}
+.flat-controls{display:flex;justify-content:flex-end;margin:0 0 10px}.available-filter{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);cursor:pointer}.available-filter input{accent-color:var(--green);width:17px;height:17px}
+.subject-group{margin:22px 0}.subject-group .section-head{margin:0 0 10px}.subject-group .section-head h2{font-size:1rem}.subject-card{background:var(--paper);border:1px solid var(--line);border-radius:9px;margin:7px 0;overflow:hidden}.subject-card[open]{border-color:var(--green)}
+.subject-summary{display:flex;align-items:center;gap:12px;cursor:pointer;padding:12px 14px;list-style:none}.subject-summary::-webkit-details-marker{display:none}.subject-summary::before{content:'+';color:var(--green);font-size:1.25rem;line-height:1;flex:none;width:16px;text-align:center}.subject-card[open]>.subject-summary::before{content:'−'}.subject-summary:hover{background:var(--soft)}.subject-name{flex:1;min-width:0;font-weight:650;font-size:.94rem;overflow-wrap:anywhere}.subject-summary .meta{white-space:nowrap}.subject-body{padding:0 14px 14px}.material-label{font-size:.82rem;color:var(--green);margin:14px 0 7px;overflow-wrap:anywhere}.subject-body .file{padding:10px}.subject-actions{display:flex;gap:12px;flex-wrap:wrap;font-size:.8rem;margin-top:12px}.admin-panel{margin:24px 0;color:var(--muted);font-size:.85rem}.admin-panel summary{cursor:pointer}.admin-panel .manage{margin-top:10px}summary:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+@media(max-width:650px){.semester-link{flex-basis:100%;padding:9px;font-size:.8rem}.subject-summary{padding:11px 9px;gap:8px}.subject-name{font-size:.88rem}.subject-body{padding:0 9px 10px}.subject-summary .meta{font-size:.72rem}.flat-controls{justify-content:flex-start}}
