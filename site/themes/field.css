@@ -1,94 +1,145 @@
 :root{
-  --bg:#f4f7fb;
+  --bg:#f2f6fb;
   --paper:#ffffff;
-  --ink:#122338;
-  --muted:#5d6f86;
-  --line:#d8e0ef;
-  --accent:#7e8cff;
-  --soft:#ecf1fb;
-  --hero:#081528;
-  --red:#9eb3ff;
-  --green:#dbc47a;
-  --hero-start:#081528;
-  --hero-end:#13274a;
-  --gold:#dbc47a;
+  --ink:#11263a;
+  --muted:#60748c;
+  --line:#d7e2f0;
+  --accent:#71b7ff;
+  --soft:#eaf3ff;
+  --hero:#061225;
+  --red:#9dc7ff;
+  --green:#79ffd6;
+  --hero-start:#040c18;
+  --hero-end:#142b53;
+  --gold:#8cf5db;
 }
 :root[data-theme=dark]{
-  --bg:#09111c;
-  --paper:#101b2b;
-  --ink:#ecf4ff;
-  --muted:#a7bad4;
-  --line:#263754;
-  --accent:#aab8ff;
-  --soft:#16253b;
-  --hero:#081528;
-  --red:#b5c1ff;
-  --green:#f0d890;
-  --hero-start:#07111e;
-  --hero-end:#13274a;
-  --gold:#f0d890;
+  --bg:#070d17;
+  --paper:#0e1828;
+  --ink:#eef6ff;
+  --muted:#a6b8d0;
+  --line:#22344f;
+  --accent:#8cc7ff;
+  --soft:#12243a;
+  --hero:#061225;
+  --red:#b8d8ff;
+  --green:#95ffe2;
+  --hero-start:#020814;
+  --hero-end:#123567;
+  --gold:#95ffe2;
 }
 @media(prefers-color-scheme:dark){:root:not([data-theme]){
-  --bg:#09111c;--paper:#101b2b;--ink:#ecf4ff;--muted:#a7bad4;--line:#263754;--accent:#aab8ff;--soft:#16253b;--hero:#081528;--red:#b5c1ff;--green:#f0d890;--hero-start:#07111e;--hero-end:#13274a;--gold:#f0d890;
+  --bg:#070d17;--paper:#0e1828;--ink:#eef6ff;--muted:#a6b8d0;--line:#22344f;--accent:#8cc7ff;--soft:#12243a;--hero:#061225;--red:#b8d8ff;--green:#95ffe2;--hero-start:#020814;--hero-end:#123567;--gold:#95ffe2;
 }}
 
-/* Убираем графический значок в шапке. */
 .mark{display:none}
 .brand{gap:0}
 .brand strong{color:var(--accent)}
 
-/* Космическая шапка с акцентом на функциональный интеграл. */
+/* Общий курсивный sci-fi характер кафедры */
+body,
+button,
+input,
+select,
+textarea,
+.brand,
+.archive-link,
+.sidebar nav a,
+.hero,
+.section-head h2,
+.course-card,
+.pagehead,
+.subject-summary,
+.file-main strong,
+.file-main small,
+.manage,
+.footer,
+.upload-dialog{font-style:italic}
+.hero h1,
+.pagehead h1,
+.course-card h3,
+.subject-name,
+.brand strong{font-family:Georgia,"Times New Roman",serif}
+
+/* Усиленный sci-fi стиль: неон, сетка, техно-рамка */
 .hero{
   background:
-    radial-gradient(circle at 16% 22%, #fff8 0 1px, transparent 1.5px),
-    radial-gradient(circle at 26% 66%, #fff6 0 1px, transparent 1.6px),
-    radial-gradient(circle at 46% 18%, #ffe7a3cc 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 62% 34%, #fff6 0 1.2px, transparent 1.8px),
-    radial-gradient(circle at 79% 19%, #b8cfffaa 0 1px, transparent 1.7px),
-    radial-gradient(circle at 84% 74%, #fff8 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 14% 84%, #b8cfff99 0 1px, transparent 1.7px),
-    linear-gradient(135deg,var(--hero-start),var(--hero-end));
-  border:1px solid #ffffff14;
-  box-shadow:inset 0 1px 0 #ffffff18;
+    radial-gradient(circle at 8% 16%, #ffffffcc 0 1px, transparent 1.7px),
+    radial-gradient(circle at 16% 58%, #ffffff88 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 28% 36%, #7bc4ff88 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 36% 82%, #92ffe388 0 1.1px, transparent 1.9px),
+    radial-gradient(circle at 50% 18%, #ffffffcc 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 61% 48%, #dce3ff88 0 1.2px, transparent 1.9px),
+    radial-gradient(circle at 74% 24%, #ffffffcc 0 1px, transparent 1.7px),
+    radial-gradient(circle at 86% 70%, #8dfde088 0 1.1px, transparent 1.9px),
+    linear-gradient(135deg,var(--hero-start),#091d39 38%,#102852 68%,var(--hero-end));
+  border:1px solid #8cc7ff2b;
+  box-shadow:
+    inset 0 1px 0 #ffffff18,
+    inset 0 0 0 1px #8cc7ff1e,
+    0 12px 40px #0612252a,
+    0 0 0 1px #79ffd608;
+  overflow:hidden;
 }
 .hero::before{
-  content:'';position:absolute;inset:14px;border-radius:14px;border:1px solid #ffffff14;pointer-events:none;
+  content:'';
+  position:absolute;
+  inset:12px;
+  border-radius:14px;
+  border:1px solid #8cc7ff22;
+  background:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg,#ffffff08 1px, transparent 1px);
+  background-size:22px 22px;
+  mask-image:linear-gradient(to right, #000 0 65%, transparent 100%);
+  pointer-events:none;
 }
 .hero::after{
   content:'';
-  position:absolute;right:6%;top:14%;width:300px;height:300px;border-radius:50%;
+  position:absolute;
+  inset:auto -40px -70px auto;
+  width:390px;
+  height:390px;
+  border-radius:50%;
   background:
-    radial-gradient(circle at center, #ffffff10 0 33%, transparent 34%),
-    radial-gradient(circle at center, transparent 0 56%, #c9d8ff18 57% 58%, transparent 59%),
-    radial-gradient(circle at center, transparent 0 73%, #f0d89016 74% 75%, transparent 76%);
-  filter:blur(.2px);
+    radial-gradient(circle at 50% 50%, #8cc7ff15 0 21%, transparent 22%),
+    radial-gradient(circle at 50% 50%, transparent 0 39%, #79ffd61a 40% 41%, transparent 42%),
+    radial-gradient(circle at 50% 50%, transparent 0 54%, #8cc7ff18 55% 56%, transparent 57%),
+    radial-gradient(circle at 36% 28%, #ffffff10 0 7%, transparent 8%),
+    radial-gradient(circle at 67% 43%, #95ffe222 0 11%, transparent 12%);
+  filter:drop-shadow(0 0 24px #79ffd633);
+  opacity:.95;
   pointer-events:none;
 }
-.hero .eyebrow{color:#cbd8ff}
-.hero h1{color:#f6f8ff}
-.hero p:last-child{color:#d9e3f6}
-.hero-copy{max-width:min(560px,58%)}
-.hero-graphic{width:34%;max-width:320px;filter:drop-shadow(0 12px 32px #0005)}
+.hero .eyebrow{color:#cfe8ff;letter-spacing:.18em}
+.hero h1{color:#f8fcff;text-shadow:0 0 18px #8cc7ff1a}
+.hero p:last-child{color:#dbebff}
+.hero-copy{max-width:min(560px,56%)}
+.hero-graphic{width:39%;max-width:355px;filter:drop-shadow(0 0 18px #79ffd636) drop-shadow(0 18px 34px #0006)}
 
+.archive-link,.semester-link,.folder,.file,.subject-card,.course-card,.manage,.theme{border-radius:12px}
 .archive-link[aria-current=page],
 .sidebar nav a:hover,.sidebar nav a[aria-current=page],
 .semester-link:hover,.semester-link[aria-current=page],
-.subject-card[open],.folder:hover,.file:hover,.manage-actions a:hover{
-  border-color:var(--gold);
-}
-.archive-link[aria-current=page],.semester-link[aria-current=page]{color:var(--gold)}
+.subject-card[open],.folder:hover,.file:hover,.manage-actions a:hover{border-color:var(--gold)}
+.archive-link[aria-current=page],.semester-link[aria-current=page]{color:var(--gold);box-shadow:0 0 0 1px #95ffe21c, 0 0 18px #95ffe214}
+.subject-summary:hover,.archive-link:hover,.semester-link:hover,.sidebar nav a:hover,.sidebar nav a[aria-current=page]{background:var(--soft)}
 .pagehead{border-bottom:2px solid var(--gold)}
 .pagehead .eyebrow,.section-head h2,.material-label,.subject-summary::before,.file-icon,.course-num{color:var(--accent)}
-.subject-summary:hover,.archive-link:hover,.semester-link:hover,.sidebar nav a:hover,.sidebar nav a[aria-current=page]{background:var(--soft)}
-.manage{border-left:3px solid var(--gold)}
+.manage{border-left:3px solid var(--gold);box-shadow:0 0 0 1px #8cc7ff12 inset}
+.course-card{box-shadow:0 10px 28px #10285210,inset 0 0 0 1px #8cc7ff10}
+.course-card:hover{box-shadow:0 14px 34px #1028521a,inset 0 0 0 1px #79ffd624}
+.file-icon{border-radius:999px;box-shadow:0 0 0 1px #8cc7ff16 inset,0 0 18px #8cc7ff12}
+.searchbox,.manage-actions a,.theme{box-shadow:0 0 0 1px #8cc7ff10 inset}
 
 @media(max-width:900px){
   .hero-copy{max-width:60%}
-  .hero::after{right:-10px;width:220px;height:220px}
+  .hero::after{width:265px;height:265px;right:-28px;bottom:-58px}
 }
 @media(max-width:650px){
   .hero{padding:26px 20px;min-height:220px}
   .hero-copy{max-width:100%}
-  .hero-graphic{width:72%;max-width:230px;margin:0 auto}
+  .hero-graphic{width:80%;max-width:245px;margin:0 auto}
   .hero::after{display:none}
+  .hero::before{mask-image:none;background-size:18px 18px}
 }

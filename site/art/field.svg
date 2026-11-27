@@ -1,28 +1,108 @@
-<?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 420 270" role="img" aria-label="Функциональный интеграл">
-  <g transform="translate(210 135) scale(2.50000000) translate(-68.00000000 -36.00000000)">
-    <g id="text_1">
-      <g style="fill: #f6f8ff" transform="translate(0 47) scale(0.32 -0.32)">
-        <defs>
-          <path id="Cmex10-5a" d="M 678 -13894  Q 838 -14053 1069 -14053  Q 1300 -14053 1490 -13736  Q 1681 -13419 1825 -12944  Q 1969 -12469 2036 -12148  Q 2103 -11828 2203 -11322  Q 2294 -10850 2378 -10375  Q 2463 -9900 2552 -9364  Q 2641 -8828 2739 -8276  Q 2838 -7725 2963 -7103  Q 3131 -6284 3204 -5932  Q 3278 -5581 3428 -4917  Q 3578 -4253 3626 -4042  Q 3675 -3831 3903 -2888  L 3988 -2553  Q 4131 -1991 4209 -1702  Q 4288 -1413 4452 -995  Q 4616 -578 4837 -289  Q 5059 0 5325 0  Q 5513 0 5673 -84  Q 5834 -169 5934 -316  Q 6034 -463 6034 -653  Q 6034 -791 5943 -881  Q 5853 -972 5716 -972  Q 5575 -972 5481 -881  Q 5388 -791 5388 -653  Q 5388 -513 5481 -419  Q 5575 -325 5716 -325  Q 5550 -166 5331 -166  Q 5213 -166 5070 -512  Q 4928 -859 4808 -1329  Q 4688 -1800 4623 -2114  Q 4559 -2428 4469 -2900  Q 4363 -3434 4292 -3831  Q 4222 -4228 4122 -4812  Q 4022 -5397 3926 -5925  Q 3831 -6453 3700 -7116  Q 3616 -7534 3456 -8292  Q 3297 -9050 3245 -9278  Q 3194 -9506 2983 -10393  Q 2772 -11281 2759 -11334  L 2681 -11628  Q 2516 -12306 2348 -12820  Q 2181 -13334 1857 -13778  Q 1534 -14222 1069 -14222  Q 791 -14222 575 -14034  Q 359 -13847 359 -13575  Q 359 -13434 453 -13340  Q 547 -13247 684 -13247  Q 775 -13247 848 -13290  Q 922 -13334 964 -13409  Q 1006 -13484 1006 -13575  Q 1006 -13713 912 -13803  Q 819 -13894 678 -13894  z " transform="scale(0.015625)" />
-          <path id="Cmsy10-44" d="M 488 50  Q 488 141 634 233  Q 781 325 897 366  Q 1263 1300 1447 2059  Q 1694 3056 1766 3994  Q 1425 3994 1094 3872  Q 922 3803 833 3695  Q 744 3588 684 3397  Q 622 3291 472 3197  Q 322 3103 206 3103  L 166 3103  Q 122 3131 122 3169  Q 234 3556 581 3828  Q 928 4100 1387 4236  Q 1847 4372 2259 4372  L 2888 4372  Q 3269 4372 3622 4297  Q 3975 4222 4267 4048  Q 4559 3875 4731 3587  Q 4903 3300 4903 2894  Q 4903 2266 4572 1728  Q 4241 1191 3691 802  Q 3141 413 2506 206  Q 1872 0 1281 0  L 531 0  Q 519 6 503 18  Q 488 31 488 50  z M 1369 378  L 1691 378  Q 2194 378 2662 528  Q 3131 678 3509 968  Q 3888 1259 4109 1681  Q 4331 2103 4331 2613  Q 4331 3119 4053 3430  Q 3775 3741 3337 3867  Q 2900 3994 2406 3994  L 2309 3994  Q 2238 3200 2016 2316  Q 1775 1353 1369 378  z " transform="scale(0.015625)" />
-          <path id="Cmmi10-27" d="M 1044 -1216  Q 1044 -1191 1056 -1141  L 1416 -13  Q 938 106 628 428  Q 319 750 319 1216  Q 319 1450 406 1744  Q 494 2038 631 2302  Q 769 2566 928 2741  Q 966 2759 972 2759  L 1050 2759  Q 1069 2759 1084 2740  Q 1100 2722 1100 2700  Q 1100 2675 1088 2663  Q 981 2547 879 2380  Q 778 2213 698 2028  Q 619 1844 566 1641  Q 513 1438 513 1288  Q 513 909 814 676  Q 1116 444 1528 366  L 1709 941  Q 1828 1313 1945 1605  Q 2063 1897 2239 2176  Q 2416 2456 2666 2642  Q 2916 2828 3225 2828  Q 3469 2828 3633 2706  Q 3797 2584 3876 2381  Q 3956 2178 3956 1947  Q 3956 1566 3787 1202  Q 3619 838 3325 548  Q 3031 259 2662 93  Q 2294 -72 1919 -72  Q 1869 -69 1811 -66  Q 1753 -63 1716 -63  L 1503 -1178  Q 1484 -1272 1407 -1333  Q 1331 -1394 1234 -1394  Q 1156 -1394 1100 -1345  Q 1044 -1297 1044 -1216  z M 1784 331  Q 1856 325 1991 325  Q 2388 325 2798 520  Q 3209 716 3479 1056  Q 3750 1397 3750 1797  Q 3750 1978 3676 2122  Q 3603 2266 3470 2348  Q 3338 2431 3163 2431  Q 2666 2431 2331 1950  Q 1997 1469 1894 916  L 1784 331  z " transform="scale(0.015625)" />
-          <path id="Cmmi10-65" d="M 1288 -72  Q 981 -72 751 87  Q 522 247 401 517  Q 281 788 281 1088  Q 281 1544 511 1945  Q 741 2347 1134 2587  Q 1528 2828 1978 2828  Q 2253 2828 2458 2686  Q 2663 2544 2663 2278  Q 2663 1909 2369 1729  Q 2075 1550 1706 1508  Q 1338 1466 891 1466  L 872 1466  Q 769 1084 769 813  Q 769 528 900 312  Q 1031 97 1300 97  Q 1681 97 2032 272  Q 2384 447 2606 756  Q 2625 775 2656 775  Q 2688 775 2720 739  Q 2753 703 2753 672  Q 2753 647 2741 634  Q 2506 306 2109 117  Q 1713 -72 1288 -72  z M 909 1631  Q 1281 1631 1597 1665  Q 1913 1700 2169 1839  Q 2425 1978 2425 2272  Q 2425 2391 2359 2480  Q 2294 2569 2189 2616  Q 2084 2663 1972 2663  Q 1700 2663 1483 2516  Q 1266 2369 1125 2133  Q 984 1897 909 1631  z " transform="scale(0.015625)" />
-          <path id="Cmmi10-69" d="M 500 459  Q 500 578 550 709  L 1069 2088  Q 1153 2322 1153 2472  Q 1153 2663 1013 2663  Q 759 2663 595 2402  Q 431 2141 353 1819  Q 341 1778 300 1778  L 225 1778  Q 172 1778 172 1838  L 172 1856  Q 275 2238 487 2533  Q 700 2828 1025 2828  Q 1253 2828 1411 2678  Q 1569 2528 1569 2297  Q 1569 2178 1516 2047  L 997 672  Q 909 459 909 288  Q 909 97 1056 97  Q 1306 97 1473 364  Q 1641 631 1709 941  Q 1722 978 1759 978  L 1838 978  Q 1863 978 1878 961  Q 1894 944 1894 922  Q 1894 916 1888 903  Q 1800 541 1583 234  Q 1366 -72 1044 -72  Q 819 -72 659 83  Q 500 238 500 459  z M 1222 3878  Q 1222 4013 1334 4122  Q 1447 4231 1581 4231  Q 1691 4231 1761 4164  Q 1831 4097 1831 3994  Q 1831 3850 1717 3742  Q 1603 3634 1466 3634  Q 1363 3634 1292 3704  Q 1222 3775 1222 3878  z " transform="scale(0.015625)" />
-          <path id="Cmmi10-53" d="M 391 -141  Q 372 -141 356 -119  Q 341 -97 341 -78  L 709 1416  Q 722 1453 763 1453  L 838 1453  Q 863 1453 877 1434  Q 891 1416 891 1388  Q 838 1169 838 997  Q 838 534 1156 309  Q 1475 84 1959 84  Q 2169 84 2372 187  Q 2575 291 2726 456  Q 2878 622 2968 826  Q 3059 1031 3059 1241  Q 3059 1466 2940 1642  Q 2822 1819 2613 1869  L 1831 2075  Q 1516 2159 1328 2414  Q 1141 2669 1141 2988  Q 1141 3372 1369 3728  Q 1597 4084 1964 4298  Q 2331 4513 2713 4513  Q 3006 4513 3251 4405  Q 3497 4297 3628 4063  L 3994 4494  Q 4031 4513 4038 4513  L 4078 4513  Q 4103 4513 4118 4491  Q 4134 4469 4134 4447  L 3763 2963  Q 3753 2919 3713 2919  L 3634 2919  Q 3578 2919 3578 2988  Q 3609 3191 3609 3341  Q 3609 3638 3507 3858  Q 3406 4078 3201 4192  Q 2997 4306 2694 4306  Q 2438 4306 2184 4159  Q 1931 4013 1775 3769  Q 1619 3525 1619 3263  Q 1619 3056 1739 2897  Q 1859 2738 2059 2681  L 2841 2478  Q 3053 2422 3211 2280  Q 3369 2138 3450 1942  Q 3531 1747 3531 1516  Q 3531 1213 3403 917  Q 3275 622 3045 378  Q 2816 134 2525 -3  Q 2234 -141 1931 -141  Q 1169 -141 838 306  L 481 -122  Q 444 -141 434 -141  L 391 -141  z " transform="scale(0.015625)" />
-          <path id="Cmr10-5b" d="M 756 -1600  L 756 4800  L 1631 4800  L 1631 4544  L 1013 4544  L 1013 -1344  L 1631 -1344  L 1631 -1600  L 756 -1600  z " transform="scale(0.015625)" />
-          <path id="Cmr10-5d" d="M 141 -1600  L 141 -1344  L 763 -1344  L 763 4544  L 141 4544  L 141 4800  L 1019 4800  L 1019 -1600  L 141 -1600  z " transform="scale(0.015625)" />
-        </defs>
-        <use xlink:href="#Cmex10-5a" transform="translate(0 145)" />
-        <use xlink:href="#Cmsy10-44" transform="translate(55.517578 0.557292)" />
-        <use xlink:href="#Cmmi10-27" transform="translate(132.617188 0.557292)" />
-        <use xlink:href="#Cmmi10-65" transform="translate(212.630501 0.557292)" />
-        <use xlink:href="#Cmmi10-69" transform="translate(265.418157 38.821354) scale(0.7)" />
-        <use xlink:href="#Cmmi10-53" transform="translate(289.514837 38.821354) scale(0.7)" />
-        <use xlink:href="#Cmr10-5b" transform="translate(332.410345 38.821354) scale(0.7)" />
-        <use xlink:href="#Cmmi10-27" transform="translate(351.790228 38.821354) scale(0.7)" />
-        <use xlink:href="#Cmr10-5d" transform="translate(397.556829 38.821354) scale(0.7)" />
-      </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 270" role="img" aria-label="Функциональный интеграл в sci-fi стиле">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#020814"/>
+      <stop offset="0.45" stop-color="#0a1830"/>
+      <stop offset="1" stop-color="#143567"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#91cbff" stop-opacity=".95"/>
+      <stop offset="0.35" stop-color="#91cbff" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#91cbff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mintGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#95ffe2" stop-opacity=".98"/>
+      <stop offset="0.32" stop-color="#95ffe2" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#95ffe2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="quasar" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff4c5"/>
+      <stop offset="0.2" stop-color="#ffe08d"/>
+      <stop offset="0.42" stop-color="#ffd15f" stop-opacity=".75"/>
+      <stop offset="0.72" stop-color="#95ffe222"/>
+      <stop offset="1" stop-color="#95ffe200"/>
+    </radialGradient>
+    <filter id="blur2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4"/></filter>
+    <filter id="blur5" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5.2"/></filter>
+  </defs>
+
+  <rect width="420" height="270" rx="22" fill="url(#bg)"/>
+
+  <!-- techno grid -->
+  <g opacity=".11" stroke="#b8d8ff">
+    <path d="M0 45H420M0 90H420M0 135H420M0 180H420M0 225H420"/>
+    <path d="M42 0V270M84 0V270M126 0V270M168 0V270M210 0V270M252 0V270M294 0V270M336 0V270M378 0V270"/>
+  </g>
+
+  <!-- stars -->
+  <g opacity=".95">
+    <circle cx="28" cy="23" r="1.1" fill="#fff"/><circle cx="51" cy="79" r="1.4" fill="#cfe4ff"/>
+    <circle cx="88" cy="31" r="1.2" fill="#fff"/><circle cx="113" cy="56" r="1.4" fill="#95ffe2"/>
+    <circle cx="151" cy="20" r="1.1" fill="#fff"/><circle cx="174" cy="63" r="1.3" fill="#cfe4ff"/>
+    <circle cx="213" cy="27" r="1.3" fill="#fff"/><circle cx="246" cy="68" r="1.2" fill="#95ffe2"/>
+    <circle cx="282" cy="26" r="1.1" fill="#fff"/><circle cx="309" cy="58" r="1.4" fill="#cfe4ff"/>
+    <circle cx="352" cy="29" r="1.1" fill="#fff"/><circle cx="390" cy="46" r="1.4" fill="#95ffe2"/>
+    <circle cx="39" cy="123" r="1.1" fill="#fff"/><circle cx="91" cy="101" r="1.4" fill="#cfe4ff"/>
+    <circle cx="331" cy="106" r="1.2" fill="#fff"/><circle cx="384" cy="129" r="1.3" fill="#95ffe2"/>
+    <circle cx="21" cy="217" r="1.1" fill="#fff"/><circle cx="74" cy="241" r="1.4" fill="#cfe4ff"/>
+    <circle cx="134" cy="228" r="1.1" fill="#fff"/><circle cx="307" cy="231" r="1.2" fill="#fff"/>
+    <circle cx="396" cy="220" r="1.4" fill="#95ffe2"/>
+  </g>
+
+  <!-- quasar / black hole left -->
+  <g transform="translate(72 66)">
+    <circle cx="0" cy="0" r="34" fill="url(#quasar)" filter="url(#blur5)"/>
+    <ellipse cx="0" cy="0" rx="56" ry="16" transform="rotate(-18)" fill="none" stroke="#ffd46a" stroke-opacity=".55" stroke-width="5"/>
+    <ellipse cx="0" cy="0" rx="68" ry="9" transform="rotate(-18)" fill="none" stroke="#cce4ff" stroke-opacity=".16" stroke-width="9"/>
+    <circle cx="0" cy="0" r="17" fill="#01050d"/>
+    <circle cx="0" cy="0" r="11" fill="#000"/>
+    <path d="M0 -53 L-7 -16 L7 -16 Z" fill="#dff1ff" opacity=".52"/>
+    <path d="M0 53 L-7 16 L7 16 Z" fill="#dff1ff" opacity=".40"/>
+  </g>
+
+  <!-- quasar / black hole right -->
+  <g transform="translate(347 194)">
+    <circle cx="0" cy="0" r="28" fill="url(#quasar)" filter="url(#blur2)"/>
+    <ellipse cx="0" cy="0" rx="45" ry="13" transform="rotate(24)" fill="none" stroke="#95ffe2" stroke-opacity=".42" stroke-width="4"/>
+    <circle cx="0" cy="0" r="15" fill="#01050d"/>
+    <circle cx="0" cy="0" r="10" fill="#000"/>
+  </g>
+
+  <!-- feynman diagrams -->
+  <g fill="none" stroke-linecap="round" stroke-width="2.2">
+    <g transform="translate(322 60)">
+      <path d="M-38 -18 Q-17 -31 0 -6 T38 -18" stroke="#d7e8ff"/>
+      <path d="M-38 18 Q-17 5 0 30 T38 18" stroke="#d7e8ff"/>
+      <path d="M0 -6 C8 -1 8 24 0 30 C-8 24 -8 -1 0 -6Z" stroke="#95ffe2" stroke-dasharray="1 6"/>
+      <circle cx="-38" cy="-18" r="2.4" fill="#fff" stroke="none"/>
+      <circle cx="-38" cy="18" r="2.4" fill="#fff" stroke="none"/>
+      <circle cx="38" cy="-18" r="2.4" fill="#fff" stroke="none"/>
+      <circle cx="38" cy="18" r="2.4" fill="#fff" stroke="none"/>
+    </g>
+    <g transform="translate(90 207)">
+      <path d="M-43 0 Q-18 -20 0 0 T43 0" stroke="#d7e8ff"/>
+      <path d="M0 0 C10 12 10 28 0 39 C-10 28 -10 12 0 0Z" stroke="#95ffe2" stroke-dasharray="1 6"/>
+      <path d="M0 39 Q18 57 41 53" stroke="#d7e8ff"/>
+      <circle cx="-43" cy="0" r="2.3" fill="#fff" stroke="none"/>
+      <circle cx="43" cy="0" r="2.3" fill="#fff" stroke="none"/>
+      <circle cx="41" cy="53" r="2.3" fill="#fff" stroke="none"/>
     </g>
   </g>
+
+  <!-- holographic rings behind the formula -->
+  <g opacity=".55" fill="none">
+    <ellipse cx="210" cy="145" rx="145" ry="55" stroke="#91cbff33" stroke-width="1.5"/>
+    <ellipse cx="210" cy="145" rx="160" ry="69" stroke="#95ffe233" stroke-width="1.1"/>
+    <path d="M70 145H350" stroke="#cfe4ff18"/>
+    <path d="M210 80V212" stroke="#cfe4ff18"/>
+  </g>
+
+  <!-- formula -->
+  <g transform="translate(0 4)">
+    <text x="210" y="154" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="57" font-style="italic" fill="#f7fbff">∫ 𝒟φ e<tspan dy="-18" font-size="34">iS[φ]</tspan></text>
+  </g>
+
+  <!-- subtle sci-fi glows -->
+  <circle cx="210" cy="145" r="92" fill="url(#cyanGlow)" opacity=".07"/>
+  <circle cx="210" cy="145" r="112" fill="url(#mintGlow)" opacity=".06"/>
 </svg>
