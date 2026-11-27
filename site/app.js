@@ -77,9 +77,41 @@ const department = data.department;
 const isCategory = node => categoryNames.has(node.name) || node.name.endsWith(' — профильные дисциплины по выбору');
 const shared = node => node && (department.id !== 'common' && data.sharedCategories.includes(node.path.split('/')[2]));
 const sharedURL = node => upstream + route(node.path);
+// Public submissions are collected by Yandex Forms; no GitHub credentials needed.
+const submissionForm = 'https://forms.yandex.ru/u/6b0a064cde8ec3a155c3dfab/';
+const submissionCategories = new Map([
+  ['Лекции','lectures'], ['Семинары и задачи','seminars'],
+  ['Литература','literature'], ['Другие материалы','other']
+]);
+function submissionURL(node) {
+  const url = new URL(submissionForm);
+  const parts = node.path.split('/');
+  const semester = parts[1]?.match(/^(\d+) семестр/);
+  if (!semester) return null;
+  // The common archive owns shared courses, regardless of the source page.
+  const common = department.id === 'common' || shared(node);
+  url.searchParams.set('department', common ? 'Общий архив' : department.name);
+  url.searchParams.set('semester', semester[1]);
+  const grouped = parts[2] && (categoryNames.has(parts[2]) || parts[2].endsWith(' — профильные дисциплины по выбору'));
+  const subject = parts[grouped ? 3 : 2];
+  if (!subject || materialNames.has(subject)) return null;
+  url.searchParams.set('subject', subject);
+  const category = submissionCategories.get(parts[grouped ? 4 : 3]);
+  if (category) url.searchParams.set('category', category);
+  return url.href;
+}
+function submissionLink(node) {
+  const url = submissionURL(node);
+  if (!url) return null;
+  const a = external('Предложить материал ↗', url);
+  a.className = 'upload-open';
+  a.title = 'Открыть Яндекс Форму в новой вкладке; аккаунт GitHub не нужен';
+  a.referrerPolicy = 'no-referrer';
+  return a;
+}
 function sharedNotice(node) {
   const block=el('div','shared-origin');
-  block.append(el('p','','Общие материалы кафедр. Для пополнения перейдите в единый архив.'));
+  block.append(el('p','','Общие материалы кафедр. Предложить материал можно здесь; публикация выполняется в общем архиве.'));
   if(upstream) block.append(external('Открыть в общем архиве ↗',sharedURL(node)));
   else block.append(el('p','shared-status','Общий архив не настроен.'));
   return block;
@@ -207,9 +239,19 @@ function subjectCard(node) {
   const details=el('details','subject-card');details.dataset.available=String(node.count>0 || (shared(node)&&!data.sharedSynced));
   const summary=el('summary','subject-summary');summary.append(el('span','subject-name',node.name),el('span','meta',shared(node)&&!data.sharedSynced?'Общий архив':filesCount(node.count)));details.append(summary);
   const body=el('div','subject-body');if(shared(node))body.append(sharedNotice(node));if(!fileList(body,node)&&(!shared(node)||data.sharedSynced))body.append(el('p','results-note','Материалы пока не добавлены.'));
-  const actions=el('div','subject-actions');actions.append(link('Ссылка на раздел',route(node.path)));
-  if(repo&&canUpload(node)){const tail=encodeURIComponent(data.branch)+'/'+enc(materialRoot)+'/'+enc(node.path);actions.append(uploadButton(node),external('Открыть папку GitHub ↗',`${repo}/tree/${tail}`));}
-  body.append(actions);details.append(body);return details;
+  const actions=el('div','subject-actions');
+  const proposal=submissionLink(node);if(proposal) actions.append(proposal);
+  actions.append(link('Ссылка на раздел',route(node.path)));
+  body.append(actions);
+  if(proposal) body.append(el('p','results-note','Без аккаунта GitHub. Материалы публикуются после проверки.'));
+  if(repo&&canUpload(node)){
+    const editor=el('details','admin-panel');
+    const tail=encodeURIComponent(data.branch)+'/'+enc(materialRoot)+'/'+enc(node.path);
+    const editorActions=el('div','subject-actions');
+    editorActions.append(uploadButton(node),external('Открыть папку GitHub ↗',`${repo}/tree/${tail}`));
+    editor.append(el('summary','','Для редакторов (GitHub)'),editorActions);body.append(editor);
+  }
+  details.append(body);return details;
 }
 function semesterContent(node) {
   const normal=el('div','semester-content');
@@ -246,6 +288,10 @@ function course(node, ancestors) {
   if(isSemester){normal=semesterContent(target);
     if(isCourse){const extra=root.folders.filter(n=>!orderedSemesters(root).includes(n));if(root.files.length||extra.length){const group=el('section','subject-group');group.append(heading('Общие материалы курса'));fileList(group,root,false);extra.forEach(n=>group.append(subjectCard(n)));normal.append(group);}}
   }else{normal=el('div');if(shared(target))normal.append(sharedNotice(target));if(!fileList(normal,target)&&(!shared(target)||data.sharedSynced))normal.append(el('div','empty','В этом разделе пока нет учебных материалов.'));if(target.folders.length){normal.append(heading('Подразделы'));const list=el('div','folder-list');target.folders.forEach(n=>list.append(folderRow(n)));normal.append(list);}}
+  if(!isSemester){
+    const proposal=submissionLink(target);
+    if(proposal){const actions=el('div','subject-actions');actions.append(proposal);normal.append(actions,el('p','results-note','Без аккаунта GitHub. Материалы публикуются после проверки.'));}
+  }
   searchBox([isCourse?root:target],normal,isCourse?'Поиск по обоим семестрам курса…':'Название дисциплины, файла или формат…');
   const admin=el('details','admin-panel');admin.append(el('summary','','Управление материалами'),manage(target));content.append(admin);
 }
