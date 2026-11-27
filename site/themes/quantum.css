@@ -1,3 +1,70 @@
-:root{--bg:#f0f8fb;--paper:#ffffff;--ink:#153743;--muted:#506b75;--line:#d2e5e8;--accent:#167b9b;--soft:#e0f2f4;--hero:#07584a;--red:#147d9e;--green:#087c61;--hero-start:#0e4c69;--hero-end:#06483d;--gold:#087c61}
-:root[data-theme=dark]{--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#92d9ff;--soft:#263e49;--hero:#07584a;--red:#92d9ff;--green:#6ad8ba;--hero-start:#0e4c69;--hero-end:#06483d;--gold:#6ad8ba}
-@media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#111e25;--paper:#1c2c34;--ink:#eaf4f6;--muted:#aec5ce;--line:#344c55;--accent:#92d9ff;--soft:#263e49;--hero:#07584a;--red:#92d9ff;--green:#6ad8ba;--hero-start:#0e4c69;--hero-end:#06483d;--gold:#6ad8ba}}
+:root{
+  --bg:#eff8fb;
+  --paper:#ffffff;
+  --ink:#103341;
+  --muted:#5a7480;
+  --line:#cfe3e8;
+  --accent:#1c86b0;
+  --soft:#e4f2f5;
+  --hero:#0b5060;
+  --red:#2294c1;
+  --green:#0f8e72;
+  --hero-start:#0c5f83;
+  --hero-end:#0b5d4a;
+  --gold:#0f8e72;
+}
+:root[data-theme=dark]{
+  --bg:#0e1b22;
+  --paper:#13252d;
+  --ink:#eaf7fb;
+  --muted:#a4c0c7;
+  --line:#28444f;
+  --accent:#8fd8ff;
+  --soft:#17313a;
+  --hero:#0a4150;
+  --red:#96ddff;
+  --green:#68d4b5;
+  --hero-start:#0c5977;
+  --hero-end:#0a5b49;
+  --gold:#68d4b5;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#0e1b22;--paper:#13252d;--ink:#eaf7fb;--muted:#a4c0c7;--line:#28444f;--accent:#8fd8ff;--soft:#17313a;--hero:#0a4150;--red:#96ddff;--green:#68d4b5;--hero-start:#0c5977;--hero-end:#0a5b49;--gold:#68d4b5;
+}}
+
+/* Убираем графический значок в шапке. */
+.mark{display:none}
+.brand{gap:0}
+.brand strong{color:var(--accent)}
+
+.hero{
+  background:
+    radial-gradient(circle at 78% 26%, #ffffff18 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 62%, #ffffff11 0 1.5px, transparent 3px),
+    linear-gradient(135deg,var(--hero-start),var(--hero-end));
+  box-shadow:inset 0 1px 0 #ffffff18;
+  border:1px solid #ffffff14;
+}
+.hero::before{content:'';position:absolute;inset:14px;border-radius:14px;border:1px solid #ffffff14;pointer-events:none}
+.hero .eyebrow{color:#c8eff4}
+.hero h1{color:#f4fdff}
+.hero p:last-child{color:#d8edf1}
+.hero-copy{max-width:min(560px,58%)}
+.hero-graphic{width:36%;max-width:340px;filter:drop-shadow(0 12px 32px #00304040)}
+
+.archive-link[aria-current=page],
+.sidebar nav a:hover,.sidebar nav a[aria-current=page],
+.semester-link:hover,.semester-link[aria-current=page],
+.subject-card[open],.folder:hover,.file:hover,.manage-actions a:hover{
+  border-color:var(--green);
+}
+.archive-link[aria-current=page],.semester-link[aria-current=page]{color:var(--green)}
+.pagehead{border-bottom:2px solid var(--green)}
+.pagehead .eyebrow,.section-head h2,.material-label,.subject-summary::before,.file-icon,.course-num{color:var(--accent)}
+.manage{border-left:3px solid var(--green)}
+
+@media(max-width:650px){
+  .hero{padding:26px 20px;min-height:220px}
+  .hero-copy{max-width:100%}
+  .hero-graphic{width:76%;max-width:230px;margin:0 auto}
+}
